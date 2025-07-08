@@ -2,8 +2,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Inicializando countdown...');
     
-    // Data do casamento: 07 de Fevereiro de 2026 às 10:00
-    const weddingDate = new Date('2026-02-07T10:00:00').getTime();
+    // Data do casamento: 07 de Fevereiro de 2026 às 11:00
+    const weddingDate = new Date('2026-02-07T11:00:00').getTime();
     
     function updateCountdown() {
         const now = new Date().getTime();
