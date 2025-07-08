@@ -743,12 +743,18 @@ body {
     background: #000;
     min-height: 400px;
     max-height: 500px;
+    height: 500px;
+    overflow: hidden;
 }
 
 .modal-image-container img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
 .modal-navigation {
@@ -761,6 +767,8 @@ body {
     justify-content: space-between;
     padding: 0 20px;
     pointer-events: none;
+    z-index: 3;
+    align-items: center;
 }
 
 .nav-btn {
@@ -975,4 +983,48 @@ body {
     .galeria h2 {
         font-size: 2.5rem;
     }
+}
+
+/* Ajuste para o modal de imagem no desktop */
+@media (min-width: 769px) {
+  .modal-image-container {
+    min-height: 400px;
+    max-height: 500px;
+    height: 500px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .modal-navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+    z-index: 3;
+    align-items: center;
+  }
+  .nav-btn {
+    pointer-events: auto;
+  }
+  .modal-content {
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    position: relative;
+  }
 }
