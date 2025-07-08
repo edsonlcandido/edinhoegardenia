@@ -1,11 +1,17 @@
-// Countdown Timer
-function initCountdown() {
-    // Data do casamento: 07 de Fevereiro de 2025 às 16:00
-    const weddingDate = new Date('February 7, 2026 10:00:00').getTime();
+// Countdown Timer - Versão Simplificada
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Inicializando countdown...');
+    
+    // Data do casamento: 07 de Fevereiro de 2026 às 10:00
+    const weddingDate = new Date('2026-02-07T10:00:00').getTime();
     
     function updateCountdown() {
         const now = new Date().getTime();
         const distance = weddingDate - now;
+        
+        console.log('Wedding date:', new Date(weddingDate));
+        console.log('Current date:', new Date(now));
+        console.log('Distance:', distance);
         
         // Verificar se os elementos existem
         const daysElement = document.getElementById('days');
@@ -28,6 +34,8 @@ function initCountdown() {
             hoursElement.textContent = hours.toString().padStart(2, '0');
             minutesElement.textContent = minutes.toString().padStart(2, '0');
             secondsElement.textContent = seconds.toString().padStart(2, '0');
+            
+            console.log('Countdown updated:', {days, hours, minutes, seconds});
         } else {
             // O casamento já aconteceu
             const countdownElement = document.getElementById('countdown');
@@ -42,10 +50,10 @@ function initCountdown() {
     
     // Atualizar a cada segundo
     setInterval(updateCountdown, 1000);
-}
+});
 
 // Smooth scrolling for navigation links
-function initSmoothScrolling() {
+document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -58,13 +66,12 @@ function initSmoothScrolling() {
             }
         });
     });
-}
+});
 
 // Header scroll effect
-function initHeaderScroll() {
+window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
-    
-    window.addEventListener('scroll', function() {
+    if (header) {
         if (window.scrollY > 100) {
             header.style.background = 'rgba(255, 255, 255, 0.98)';
             header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
@@ -72,11 +79,11 @@ function initHeaderScroll() {
             header.style.background = 'rgba(255, 255, 255, 0.95)';
             header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
         }
-    });
-}
+    }
+});
 
 // Copy PIX key functionality
-function initCopyPix() {
+document.addEventListener('DOMContentLoaded', function() {
     const copyButton = document.querySelector('.btn-copy');
     if (copyButton) {
         copyButton.addEventListener('click', function() {
@@ -95,7 +102,7 @@ function initCopyPix() {
             }
         });
     }
-}
+});
 
 // Fallback copy method for older browsers
 function fallbackCopyTextToClipboard(text) {
@@ -190,7 +197,7 @@ function showNotification(message) {
 }
 
 // Form submission
-function initFormSubmission() {
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.confirmacao-form');
     if (form) {
         form.addEventListener('submit', function(e) {
@@ -224,73 +231,6 @@ function initFormSubmission() {
             }, 2000);
         });
     }
-}
-
-// Intersection Observer for animations
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements for animation
-    document.querySelectorAll('.timeline-item, .evento-card, .presente-card').forEach(el => {
-        observer.observe(el);
-    });
-    
-    // Add CSS for animations
-    const animationStyles = document.createElement('style');
-    animationStyles.textContent = `
-        .timeline-item, .evento-card, .presente-card {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .timeline-item.animate-in, .evento-card.animate-in, .presente-card.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    `;
-    document.head.appendChild(animationStyles);
-}
-
-// Initialize all functions when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, initializing countdown...');
-    
-    // Debug: verificar se os elementos existem
-    const countdownElements = {
-        days: document.getElementById('days'),
-        hours: document.getElementById('hours'),
-        minutes: document.getElementById('minutes'),
-        seconds: document.getElementById('seconds')
-    };
-    
-    console.log('Countdown elements found:', countdownElements);
-    
-    initCountdown();
-    initSmoothScrolling();
-    initHeaderScroll();
-    initCopyPix();
-    initFormSubmission();
-    initScrollAnimations();
-    
-    // Add loading animation
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
 });
 
 // Add some interactive effects
@@ -308,81 +248,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Add parallax effect to hero section
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
-    });
+    // Add loading animation
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
 });
 
-// Add floating hearts animation
-function createFloatingHearts() {
-    const heartsContainer = document.createElement('div');
-    heartsContainer.className = 'floating-hearts';
-    heartsContainer.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
-        overflow: hidden;
-    `;
-    
-    const heartStyles = document.createElement('style');
-    heartStyles.textContent = `
-        .floating-hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-        
-        .heart {
-            position: absolute;
-            color: rgba(212, 175, 55, 0.6);
-            font-size: 20px;
-            animation: float-heart 8s linear infinite;
-        }
-        
-        @keyframes float-heart {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(heartStyles);
-    
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = '♥';
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.animationDelay = Math.random() * 8 + 's';
-        heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
-        
-        heartsContainer.appendChild(heart);
-        
-        setTimeout(() => {
-            heart.remove();
-        }, 8000);
+// Add parallax effect to hero section
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
     }
-    
-    document.body.appendChild(heartsContainer);
-    
-    // Create hearts periodically
-    setInterval(createHeart, 3000);
-}
+});
+
+console.log('Wedding script loaded successfully!');
