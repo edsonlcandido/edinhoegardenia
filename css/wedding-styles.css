@@ -83,6 +83,7 @@ body {
 
 /* Hero Section */
 .hero {
+    min-height: 100vh;
     height: 100vh;
     background: linear-gradient(135deg, #ffeaa7, #fab1a0);
     display: flex;
@@ -90,6 +91,7 @@ body {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    padding-top: 80px; /* Espaço para o header fixo */
 }
 
 .hero-content {
@@ -553,13 +555,20 @@ body {
         display: none;
     }
     
+    .hero {
+        padding-top: 100px; /* Mais espaço no mobile */
+        min-height: 100vh;
+    }
+    
     .hero-content {
         flex-direction: column;
         text-align: center;
+        padding: 1rem;
     }
     
     .hero-image {
         margin-bottom: 2rem;
+        margin-top: 1rem;
     }
     
     .couple-photo {
@@ -622,7 +631,15 @@ body {
 
 @media (max-width: 480px) {
     .hero {
-        padding: 2rem 1rem;
+        padding-top: 90px; /* Ajuste para telas muito pequenas */
+    }
+    
+    .hero-content {
+        padding: 0.5rem;
+    }
+    
+    .hero-image {
+        margin-top: 0.5rem;
     }
     
     .couple-names {
