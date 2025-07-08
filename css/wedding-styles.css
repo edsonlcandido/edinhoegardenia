@@ -543,6 +543,12 @@ body {
     opacity: 0.8;
 }
 
+.footer a {
+    color: #fff;
+    text-decoration: underline;
+}
+}
+
 /* Countdown Finalizado */
 .countdown-finished {
     text-align: center;
