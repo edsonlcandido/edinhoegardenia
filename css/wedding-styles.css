@@ -18,6 +18,9 @@ body {
     padding: 0 20px;
 }
 
+/* Importando fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 /* Header */
 .header {
     position: fixed;
@@ -46,6 +49,13 @@ body {
     font-weight: 700;
     color: #d4af37;
     text-decoration: none;
+}
+
+.logo-amp {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.5rem;
+    font-weight: 200;
+    color: #d4af37;
 }
 
 .nav-links {
@@ -134,6 +144,12 @@ body {
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     animation: fadeInUp 1s ease-out;
+}
+
+.couple-names-amp {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    font-weight: 200;
 }
 
 .wedding-date {
