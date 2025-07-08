@@ -257,13 +257,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
-// Add parallax effect to hero section
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
-
 console.log('Wedding script loaded successfully!');
