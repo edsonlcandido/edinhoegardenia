@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edinho & Gardenia - Nosso Casamento</title>
+    <link rel="stylesheet" href="css/wedding-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">E & G</div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#nossa-historia">Nossa História</a></li>
+                <li><a href="#evento">Evento</a></li>
+                <li><a href="#presentes">Presentes</a></li>
+                <li><a href="#confirmacao">Confirmação</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Edinho e Gardenia" class="couple-photo">
+            </div>
+            <div class="hero-text">
+                <h1 class="couple-names">Edinho & Gardenia</h1>
+                <p class="wedding-date">07 de Fevereiro de 2025</p>
+                <p class="tagline">Celebrando nosso amor eterno</p>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span id="days">00</span>
+                        <label>Dias</label>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours">00</span>
+                        <label>Horas</label>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes">00</span>
+                        <label>Minutos</label>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds">00</span>
+                        <label>Segundos</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Nossa História -->
+    <section id="nossa-historia" class="nossa-historia">
+        <div class="container">
+            <h2>Nossa História</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-content">
+                        <h3>Primeiro Encontro</h3>
+                        <p>Foi amor à primeira vista quando nos conhecemos em uma tarde de domingo. Desde então, soubemos que éramos almas gêmeas.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h3>O Pedido</h3>
+                        <p>Em um pôr do sol inesquecível, Edinho pediu Gardenia em casamento. Foi o "sim" mais feliz de nossas vidas!</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-content">
+                        <h3>O Grande Dia</h3>
+                        <p>Agora vamos oficializar nossa união e celebrar com família e amigos. Será o dia mais especial de nossas vidas!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evento -->
+    <section id="evento" class="evento">
+        <div class="container">
+            <h2>Detalhes do Evento</h2>
+            <div class="evento-details">
+                <div class="evento-card">
+                    <h3>Cerimônia</h3>
+                    <p><strong>Data:</strong> 07 de Fevereiro de 2025</p>
+                    <p><strong>Horário:</strong> 16:00</p>
+                    <p><strong>Local:</strong> Igreja São José</p>
+                    <p><strong>Endereço:</strong> Rua das Flores, 123 - Centro</p>
+                    <a href="#" class="map-link">Ver no Mapa</a>
+                </div>
+                <div class="evento-card">
+                    <h3>Recepção</h3>
+                    <p><strong>Data:</strong> 07 de Fevereiro de 2025</p>
+                    <p><strong>Horário:</strong> 18:00</p>
+                    <p><strong>Local:</strong> Salão de Festas Primavera</p>
+                    <p><strong>Endereço:</strong> Avenida Principal, 456 - Jardim</p>
+                    <a href="#" class="map-link">Ver no Mapa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presentes -->
+    <section id="presentes" class="presentes">
+        <div class="container">
+            <h2>Lista de Presentes</h2>
+            <p class="presentes-text">Sua presença é o nosso maior presente! Mas se deseja nos presentear, preparamos algumas sugestões:</p>
+            <div class="presentes-options">
+                <div class="presente-card">
+                    <h3>Pix</h3>
+                    <p>Chave PIX: casamento@edinhogardenia.com</p>
+                    <button class="btn-copy">Copiar Chave</button>
+                </div>
+                <div class="presente-card">
+                    <h3>Lista de Presentes</h3>
+                    <p>Acesse nossa lista completa de presentes</p>
+                    <a href="#" class="btn-lista">Ver Lista</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmação -->
+    <section id="confirmacao" class="confirmacao">
+        <div class="container">
+            <h2>Confirmação de Presença</h2>
+            <p>Por favor, confirme sua presença até 25 de Janeiro de 2025</p>
+            <form class="confirmacao-form">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+                <div class="form-group">
+                    <label for="acompanhantes">Número de Acompanhantes</label>
+                    <select id="acompanhantes" name="acompanhantes" required>
+                        <option value="">Selecione</option>
+                        <option value="0">Apenas eu</option>
+                        <option value="1">1 acompanhante</option>
+                        <option value="2">2 acompanhantes</option>
+                        <option value="3">3 acompanhantes</option>
+                        <option value="4">4 acompanhantes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem para os Noivos</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Deixe uma mensagem especial..."></textarea>
+                </div>
+                <button type="submit" class="btn-confirmar">Confirmar Presença</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Edinho & Gardenia. Feito com ❤️ para nosso grande dia.</p>
+        </div>
+    </footer>
+
+    <script src="js/wedding-script-fixed.js"></script>
+</body>
+</html>
