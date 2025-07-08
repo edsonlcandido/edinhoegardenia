@@ -136,6 +136,10 @@ body {
     animation: fadeInUp 1s ease-out;
 }
 
+.couple-names-amp {
+    font-size: 1.5rem;
+}
+
 .wedding-date {
     font-size: 1.5rem;
     font-weight: 600;
