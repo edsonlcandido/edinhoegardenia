@@ -257,4 +257,174 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
+// Galeria de Fotos
+let photos = [
+    {
+        src: 'https://picsum.photos/800/800?random=1',
+        caption: 'Nosso primeiro encontro ❤️ Foi amor à primeira vista!',
+        date: '3 semanas atrás',
+        likes: 157
+    },
+    {
+        src: 'https://picsum.photos/800/800?random=2',
+        caption: 'Viagem inesquecível para a praia 🏖️ Momentos como este são eternos',
+        date: '2 semanas atrás',
+        likes: 234
+    },
+    {
+        src: 'https://picsum.photos/800/800?random=3',
+        caption: 'Jantar romântico no nosso restaurante favorito 🍷✨',
+        date: '1 semana atrás',
+        likes: 189
+    },
+    {
+        src: 'https://picsum.photos/800/800?random=4',
+        caption: 'Caminhada no parque em um domingo perfeito 🌸',
+        date: '6 dias atrás',
+        likes: 176
+    },
+    {
+        src: 'https://picsum.photos/800/800?random=5',
+        caption: 'Fazendo biscoitos juntos na cozinha 👩‍🍳👨‍🍳',
+        date: '4 dias atrás',
+        likes: 203
+    },
+    {
+        src: 'https://picsum.photos/800/800?random=6',
+        caption: 'Nosso amor cresce a cada dia que passa 💕',
+        date: '2 dias atrás',
+        likes: 298
+    },
+    {
+        src: 'https://picsum.photos/800/800?random=7',
+        caption: 'Sessão de fotos pré-casamento 📸 Que nervosismo gostoso!',
+        date: '1 dia atrás',
+        likes: 445
+    },
+    {
+        src: 'https://picsum.photos/800/800?random=8',
+        caption: 'Escolhendo as alianças juntos 💍 O momento mais especial!',
+        date: '1 dia atrás',
+        likes: 523
+    },
+    {
+        src: 'https://picsum.photos/800/800?random=9',
+        caption: 'Ensaiando para o grande dia 💃🕺',
+        date: '12 horas atrás',
+        likes: 367
+    }
+];
+
+let currentPhotoIndex = 0;
+
+function loadPhotos() {
+    const fotoGrid = document.getElementById('fotoGrid');
+    if (!fotoGrid) return;
+
+    fotoGrid.innerHTML = '';
+
+    photos.forEach((photo, index) => {
+        const fotoItem = document.createElement('div');
+        fotoItem.className = 'foto-item';
+        fotoItem.onclick = () => openModal(index);
+
+        fotoItem.innerHTML = `
+            <img src="${photo.src}" alt="Foto do casal" loading="lazy">
+            <div class="foto-overlay">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                </svg>
+            </div>
+        `;
+
+        fotoGrid.appendChild(fotoItem);
+    });
+}
+
+function openModal(photoIndex) {
+    currentPhotoIndex = photoIndex;
+    const modal = document.getElementById('instagramModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const modalDate = document.getElementById('modalDate');
+    const likesCount = document.getElementById('likesCount');
+
+    if (modal && photos[photoIndex]) {
+        const photo = photos[photoIndex];
+        
+        modalImage.src = photo.src;
+        modalCaption.textContent = photo.caption;
+        modalDate.textContent = photo.date;
+        likesCount.textContent = `${photo.likes} curtidas`;
+
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('instagramModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+function previousPhoto() {
+    if (currentPhotoIndex > 0) {
+        openModal(currentPhotoIndex - 1);
+    }
+}
+
+function nextPhoto() {
+    if (currentPhotoIndex < photos.length - 1) {
+        openModal(currentPhotoIndex + 1);
+    }
+}
+
+function toggleLike() {
+    const likeBtn = document.querySelector('.like-btn');
+    const likesCount = document.getElementById('likesCount');
+    
+    if (likeBtn && likesCount) {
+        const isLiked = likeBtn.classList.contains('liked');
+        
+        if (isLiked) {
+            likeBtn.classList.remove('liked');
+            photos[currentPhotoIndex].likes--;
+        } else {
+            likeBtn.classList.add('liked');
+            photos[currentPhotoIndex].likes++;
+        }
+        
+        likesCount.textContent = `${photos[currentPhotoIndex].likes} curtidas`;
+    }
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar galeria de fotos
+    loadPhotos();
+
+    // Fechar modal com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+
+    // Navegação do modal com setas do teclado
+    document.addEventListener('keydown', function(e) {
+        const modal = document.getElementById('instagramModal');
+        if (modal && modal.style.display === 'flex') {
+            if (e.key === 'ArrowLeft') {
+                previousPhoto();
+            } else if (e.key === 'ArrowRight') {
+                nextPhoto();
+            }
+        }
+    });
+});
+
 console.log('Wedding script loaded successfully!');
