@@ -257,4 +257,248 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
+// Galeria de Fotos
+let photos = [
+    {
+        location:'Jundiai, SP',
+        src: 'img/20211101 - balneario.jpeg',
+        caption: 'Viagem inesquecível para a praia 🏖️ Momentos como este são eternos',
+        date: 'novembro de 2021',
+        likes: 157
+    },
+    {
+        location:'Balneario Camburiu, SC',
+        src: 'img/20211102 - balneario.jpg',
+        caption: 'Sempre na melhor companhia ❤️',
+        date: 'novembro de 2021',
+        likes: 234
+    },
+    {
+        location:'Sorocaba, SP',
+        src: 'img/20211201 - sorocaba.jpg',
+        caption: 'Sol e piscina com o amor da minha vida ☀️💦',
+        date: 'dezembro de 2021',
+        likes: 189
+    },
+    {
+        location:'Alfenas, MG',
+        src: 'img/20220401 - alfenas.jpg',
+        caption: 'No role pois nós também somos jovens 😎, RIP carneiro',
+        date: 'abril de 2022',
+        likes: 176
+    },
+    {
+        location:'Guassussê, CE',
+        src: 'img/20220601 - guassusse.jpg',
+        caption: 'O beijo mais gostoso do mundo 😘',
+        date: 'junho de 2022',
+        likes: 203
+    },
+    {
+        location:'Campina Grande, PB',
+        src: 'img/20220622 - campina.jpg',
+        caption: 'No maior são joão do mundo 🎉',
+        date: 'junho de 2022',
+        likes: 298
+    },
+    {
+        location:'Paris, França 😹',
+        src: 'img/20230107 - paris.jpeg',
+        caption: 'Na cidade luz, invejosos dirão que é mentira 😏',
+        date: 'janeiro de 2023',
+        likes: 445
+    },
+    {
+        location:'Rio de Janeiro, RJ',
+        src: 'img/20230213 - rio.jpg',
+        caption: 'Jesus Cristo, eu estou aqui! 😍',
+        date: 'fevereiro de 2023',
+        likes: 523
+    },
+    {
+        location:'São Paulo, SP',
+        src: 'img/20230820 - sao paulo.jpg',
+        caption: 'O amor é rosa ❤️',
+        date: 'agosto de 2023',
+        likes: 367
+    },
+    {
+        location:'Jundiaí, SP',
+        src: 'img/20241215 - jundiai.jpg',
+        caption: 'Nas corridas da vida, pois também somo fitness 🏃‍♂️💨',
+        date: 'dezembro de 2024',
+        likes: 367
+    },
+    {
+        location:'Arraial do Cabo, RJ',
+        src: 'img/20250215 - arraial.jpg',
+        caption: 'Já falei que gostamos de praia? 🏖️. Não me leve a mal, me leve para arraial.',
+        date: 'fevereiro de 2025',
+        likes: 412
+    },
+    {
+        location:'São Paulo, SP',
+        src: 'img/20250405 - sao paulo.jpg',
+        caption: 'O tão esperado sim! 💍',
+        date: 'abril de 2025',
+        likes: 589
+    }
+];
+
+let currentPhotoIndex = 0;
+
+function loadPhotos() {
+    const fotoGrid = document.getElementById('fotoGrid');
+    if (!fotoGrid) return;
+
+    fotoGrid.innerHTML = '';
+
+    photos.forEach((photo, index) => {
+        const fotoItem = document.createElement('div');
+        fotoItem.className = 'foto-item';
+        fotoItem.onclick = () => openModal(index);
+
+        fotoItem.innerHTML = `
+            <img src="${photo.src}" alt="Foto do casal" loading="lazy">
+            <div class="foto-overlay">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                </svg>
+            </div>
+        `;
+
+        fotoGrid.appendChild(fotoItem);
+    });
+}
+
+function openModal(photoIndex) {
+    currentPhotoIndex = photoIndex;
+    const location = document.getElementById('photo-location');
+    const modal = document.getElementById('instagramModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const modalDate = document.getElementById('modalDate');
+    const likesCount = document.getElementById('likesCount');
+
+
+
+    if (modal && photos[photoIndex]) {
+        const photo = photos[photoIndex];
+        location.textContent = photo.location;
+        modalCaption.textContent = photo.caption;
+        modalDate.textContent = photo.date;
+        likesCount.textContent = `${photo.likes} curtidas`;
+
+        // Ajuste dinâmico ao carregar a imagem
+        modalImage.onload = function() {
+            adjustModalImageSize(this);
+        };
+        modalImage.src = photo.src;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+
+
+function adjustModalImageSize(img) {
+    const container = img.parentElement;
+    const containerRect = container.getBoundingClientRect();
+    const imgAspectRatio = img.naturalWidth / img.naturalHeight;
+    const containerAspectRatio = containerRect.width / containerRect.height;
+
+    // Reset estilos
+    img.style.width = 'auto';
+    img.style.height = 'auto';
+    img.style.maxWidth = '100%';
+    img.style.maxHeight = '100%';
+
+    // Ajuste para caber a maior dimensão
+    if (imgAspectRatio > containerAspectRatio) {
+        // Imagem paisagem: limitar pela largura
+        img.style.width = '100%';
+        img.style.height = 'auto';
+    } else {
+        // Imagem retrato: limitar pela altura
+        img.style.height = '100%';
+        img.style.width = 'auto';
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('instagramModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+function previousPhoto() {
+    if (currentPhotoIndex > 0) {
+        openModal(currentPhotoIndex - 1);
+    }
+}
+
+function nextPhoto() {
+    if (currentPhotoIndex < photos.length - 1) {
+        openModal(currentPhotoIndex + 1);
+    }
+}
+
+function toggleLike() {
+    const likeBtn = document.querySelector('.like-btn');
+    const likesCount = document.getElementById('likesCount');
+    
+    if (likeBtn && likesCount) {
+        const isLiked = likeBtn.classList.contains('liked');
+        
+        if (isLiked) {
+            likeBtn.classList.remove('liked');
+            photos[currentPhotoIndex].likes--;
+        } else {
+            likeBtn.classList.add('liked');
+            photos[currentPhotoIndex].likes++;
+        }
+        
+        likesCount.textContent = `${photos[currentPhotoIndex].likes} curtidas`;
+    }
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar galeria de fotos
+    loadPhotos();
+
+
+
+    // Fechar modal com ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+
+    // Navegação do modal com setas do teclado
+    document.addEventListener('keydown', function(e) {
+        const modal = document.getElementById('instagramModal');
+        if (modal && modal.style.display === 'flex') {
+            if (e.key === 'ArrowLeft') {
+                previousPhoto();
+            } else if (e.key === 'ArrowRight') {
+                nextPhoto();
+            }
+        }
+    });
+
+    // Ajustar imagem ao redimensionar janela
+    window.addEventListener('resize', function() {
+        const modal = document.getElementById('instagramModal');
+        const modalImage = document.getElementById('modalImage');
+        if (modal && modal.style.display === 'flex' && modalImage && modalImage.src) {
+            setTimeout(() => adjustModalImageSize(modalImage), 100);
+        }
+    });
+});
+
 console.log('Wedding script loaded successfully!');
