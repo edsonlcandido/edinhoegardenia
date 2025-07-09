@@ -1,0 +1,25 @@
+<!-- Arquivo placeholder para imagens da galeria -->
+<!-- As imagens estão sendo carregadas via Picsum Photos API no JavaScript -->
+<!-- Para usar imagens reais, substitua as URLs no array 'photos' em wedding-script.js -->
+
+Instruções para adicionar suas próprias fotos:
+
+1. Coloque suas fotos na pasta 'img/' com nomes como:
+   - foto1.jpg, foto2.jpg, foto3.jpg, etc.
+
+2. No arquivo js/wedding-script.js, substitua as URLs do array 'photos':
+   Exemplo:
+   {
+       src: 'img/foto1.jpg',
+       caption: 'Nosso primeiro encontro ❤️',
+       date: '3 semanas atrás',
+       likes: 157
+   }
+
+3. Adicione quantas fotos quiser - a paginação será ajustada automaticamente.
+
+Formatos recomendados:
+- JPG ou PNG
+- Tamanho: 800x800px (quadrado)
+- Qualidade: Alta
+- Tamanho do arquivo: Máximo 2MB para melhor performance
