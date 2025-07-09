@@ -270,77 +270,77 @@ let photos = [
         location:'Balneario Camburiu, SC',
         src: 'img/202111 - balneario.jpg',
         caption: 'Viagem inesquecível para a praia 🏖️ Momentos como este são eternos',
-        date: '2 semanas atrás',
+        date: 'novembro de 2021',
         likes: 234
     },
     {
         location:'Sorocaba, SP',
-        src: 'https://picsum.photos/800/800?random=3',
-        caption: 'Jantar romântico no nosso restaurante favorito 🍷✨',
-        date: '1 semana atrás',
+        src: 'img/202112 - sorocaba.jpg',
+        caption: 'Sol e piscina com o amor da minha vida ☀️💦',
+        date: 'dezembro de 2021',
         likes: 189
     },
     {
         location:'Alfenas, MG',
-        src: 'https://picsum.photos/800/800?random=4',
-        caption: 'Caminhada no parque em um domingo perfeito 🌸',
-        date: '6 dias atrás',
+        src: 'img/202204 - alfenas.jpg',
+        caption: 'No role pois nos também soomos jovens 😎, RIP carneiro',
+        date: 'abril de 2022',
         likes: 176
     },
     {
         location:'Guassussê, CE',
-        src: 'https://picsum.photos/800/800?random=5',
-        caption: 'Fazendo biscoitos juntos na cozinha 👩‍🍳👨‍🍳',
-        date: '4 dias atrás',
+        src: 'img/202206 - guassusse.jpg',
+        caption: 'O beijo mais gostoso do mundo 😘',
+        date: 'junho de 2022',
         likes: 203
     },
     {
         location:'Campina Grande, PB',
-        src: 'https://picsum.photos/800/800?random=6',
-        caption: 'Nosso amor cresce a cada dia que passa 💕',
-        date: '2 dias atrás',
+        src: 'img/20220622 - campina.jpg',
+        caption: 'No maior são joão do mundo 🎉',
+        date: 'junho de 2022',
         likes: 298
     },
     {
         location:'Paris, França 😹',
-        src: 'https://picsum.photos/800/800?random=7',
-        caption: 'Sessão de fotos pré-casamento 📸 Que nervosismo gostoso!',
-        date: '1 dia atrás',
+        src: 'img/20230107 - paris.jpeg',
+        caption: 'Na cidade luz, invejosos dirão que é mentira 😏',
+        date: 'janeiro de 2023',
         likes: 445
     },
     {
         location:'Rio de Janeiro, RJ',
-        src: 'https://picsum.photos/800/800?random=8',
-        caption: 'Escolhendo as alianças juntos 💍 O momento mais especial!',
-        date: '1 dia atrás',
+        src: 'img/20230213 - rio.jpg',
+        caption: 'Jesus Cristo, eu estou aqui! 😍',
+        date: 'fevereiro de 2023',
         likes: 523
     },
     {
         location:'São Paulo, SP',
-        src: 'https://picsum.photos/800/800?random=9',
-        caption: 'Ensaiando para o grande dia 💃🕺',
-        date: '12 horas atrás',
+        src: 'img/20230820 - sao paulo.jpg',
+        caption: 'O amor é rosa ❤️',
+        date: 'agosto de 2023',
         likes: 367
     },
     {
         location:'Jundiaí, SP',
-        src: 'https://picsum.photos/800/800?random=9',
-        caption: 'Ensaiando para o grande dia 💃🕺',
-        date: '12 horas atrás',
+        src: 'img/20241215 - jundiai.jpg',
+        caption: 'Nas corridas da vida, pois também somo fitness 🏃‍♂️💨',
+        date: 'dezembro de 2024',
         likes: 367
     },
     {
         location:'Arraial do Cabo, RJ',
-        src: 'https://picsum.photos/800/800?random=10',
-        caption: 'Contagem regressiva para o grande dia! ⏳',
-        date: '6 horas atrás',
+        src: 'img/20250215 - arraial.jpg',
+        caption: 'Já falei que gostamos de praia? 🏖️. Não me leve a mal, me leve para arraial.',
+        date: 'fevereiro de 2025',
         likes: 412
     },
     {
         location:'São Paulo, SP',
-        src: 'https://picsum.photos/800/800?random=11',
-        caption: 'Últimos preparativos para o casamento 💒',
-        date: '2 horas atrás',
+        src: 'img/20250405 - sao paulo.jpg',
+        caption: 'O tão esperado sim! 💍',
+        date: 'abril de 2025',
         likes: 589
     }
 ];
@@ -381,17 +381,48 @@ function openModal(photoIndex) {
     const modalDate = document.getElementById('modalDate');
     const likesCount = document.getElementById('likesCount');
 
+
+
     if (modal && photos[photoIndex]) {
         const photo = photos[photoIndex];
-        
         location.textContent = photo.location;
-        modalImage.src = photo.src;
         modalCaption.textContent = photo.caption;
         modalDate.textContent = photo.date;
         likesCount.textContent = `${photo.likes} curtidas`;
 
+        // Ajuste dinâmico ao carregar a imagem
+        modalImage.onload = function() {
+            adjustModalImageSize(this);
+        };
+        modalImage.src = photo.src;
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
+    }
+}
+
+
+
+function adjustModalImageSize(img) {
+    const container = img.parentElement;
+    const containerRect = container.getBoundingClientRect();
+    const imgAspectRatio = img.naturalWidth / img.naturalHeight;
+    const containerAspectRatio = containerRect.width / containerRect.height;
+
+    // Reset estilos
+    img.style.width = 'auto';
+    img.style.height = 'auto';
+    img.style.maxWidth = '100%';
+    img.style.maxHeight = '100%';
+
+    // Ajuste para caber a maior dimensão
+    if (imgAspectRatio > containerAspectRatio) {
+        // Imagem paisagem: limitar pela largura
+        img.style.width = '100%';
+        img.style.height = 'auto';
+    } else {
+        // Imagem retrato: limitar pela altura
+        img.style.height = '100%';
+        img.style.width = 'auto';
     }
 }
 
@@ -439,6 +470,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar galeria de fotos
     loadPhotos();
 
+
+
     // Fechar modal com ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
@@ -455,6 +488,15 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (e.key === 'ArrowRight') {
                 nextPhoto();
             }
+        }
+    });
+
+    // Ajustar imagem ao redimensionar janela
+    window.addEventListener('resize', function() {
+        const modal = document.getElementById('instagramModal');
+        const modalImage = document.getElementById('modalImage');
+        if (modal && modal.style.display === 'flex' && modalImage && modalImage.src) {
+            setTimeout(() => adjustModalImageSize(modalImage), 100);
         }
     });
 });
