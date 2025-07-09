@@ -894,7 +894,6 @@ body {
         width: 95%;
     }
 }
-}
 
 @media (max-width: 480px) {
     .hero {
@@ -931,4 +930,92 @@ body {
     .confirmacao h2 {
         font-size: 2rem;
     }
+}
+
+/* Gift Modal Custom Styles */
+.gift-modal {
+    display: none;
+    position: fixed;
+    z-index: 20000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+}
+.gift-modal.show {
+    display: flex !important;
+}
+.gift-modal-content {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+    z-index: 20001;
+}
+.gift-modal-close {
+    color: #999;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 20002;
+}
+.gift-modal-close:hover {
+    color: #333;
+}
+.gift-modal h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #d4af37;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 0;
+}
+
+/* Estilo dos campos do formulário do modal de presentes */
+.gift-form-group {
+    margin-bottom: 1.5rem;
+}
+.gift-form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 600;
+}
+.gift-form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background: #fafafa;
+    color: #333;
+    box-sizing: border-box;
+}
+.gift-form-group input:focus {
+    outline: none;
+    border-color: #d4af37;
+    background: #fffbe6;
+}
+.gift-form-group input[type="number"]::-webkit-inner-spin-button,
+.gift-form-group input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.gift-form-group input[type="number"] {
+    -moz-appearance: textfield;
 }

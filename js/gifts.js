@@ -140,8 +140,8 @@ let currentGift = null;
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('gift-list')) {
         initializeGiftList();
-        setupModal();
-        setupFormValidation();
+        setupGiftModal();
+        setupGiftFormValidation();
     }
 });
 
@@ -291,96 +291,79 @@ function openGiftModal(giftId) {
     currentGift = giftItems.find(gift => gift.id === giftId);
     if (currentGift) {
         document.getElementById('modal-gift-name').textContent = currentGift.name;
-        document.getElementById('gift-modal').style.display = 'block';
+        const modal = document.getElementById('gift-modal');
+        modal.classList.add('show');
         document.body.style.overflow = 'hidden';
     }
 }
 
 // Setup modal functionality
-function setupModal() {
+function setupGiftModal() {
     const modal = document.getElementById('gift-modal');
-    const closeBtn = modal.querySelector('.close');
-    
-    // Close modal when clicking X
-    closeBtn.addEventListener('click', closeModal);
-    
-    // Close modal when clicking outside
+    const closeBtn = modal.querySelector('.gift-modal-close');
+    // Fecha ao clicar no X
+    closeBtn.addEventListener('click', closeGiftModal);
+    // Fecha ao clicar fora do conteúdo
     window.addEventListener('click', function(e) {
         if (e.target === modal) {
-            closeModal();
+            closeGiftModal();
         }
     });
-    
-    // Close modal with Escape key
+    // Fecha com tecla ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.style.display === 'block') {
-            closeModal();
+            closeGiftModal();
         }
     });
 }
 
 // Close modal
-function closeModal() {
-    document.getElementById('gift-modal').style.display = 'none';
+function closeGiftModal() {
+    const modal = document.getElementById('gift-modal');
+    modal.classList.remove('show');
     document.body.style.overflow = 'auto';
     document.getElementById('gift-form').reset();
 }
 
 // Setup form validation and submission
-function setupFormValidation() {
+function setupGiftFormValidation() {
     const form = document.getElementById('gift-form');
-    
     // CPF formatting
     const cpfInput = document.getElementById('buyer-cpf');
     cpfInput.addEventListener('input', function(e) {
         let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 11) value = value.slice(0, 11);
         value = value.replace(/(\d{3})(\d)/, '$1.$2');
         value = value.replace(/(\d{3})(\d)/, '$1.$2');
         value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
         e.target.value = value;
     });
-    
     // Phone formatting
     const phoneInput = document.getElementById('buyer-phone');
     phoneInput.addEventListener('input', function(e) {
         let value = e.target.value.replace(/\D/g, '');
-        value = value.replace(/(\d{2})(\d)/, '($1) $2');
-        value = value.replace(/(\d{5})(\d{1,4})$/, '$1-$2');
+        if (value.length > 11) value = value.slice(0, 11);
+        if (value.length > 10) {
+            value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        } else if (value.length > 6) {
+            value = value.replace(/(\d{2})(\d{4,5})(\d{0,4})/, '($1) $2-$3');
+        } else if (value.length > 2) {
+            value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+        } else {
+            value = value.replace(/(\d*)/, '($1');
+        }
         e.target.value = value;
     });
-    
     // Form submission
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        const formData = new FormData(form);
-        const giftData = {
-            gift: currentGift.name,
-            value: formData.get('gift-value'),
-            name: formData.get('buyer-name'),
-            cpf: formData.get('buyer-cpf'),
-            phone: formData.get('buyer-phone')
-        };
-        
-        // Validate CPF
-        if (!isValidCPF(giftData.cpf)) {
-            showNotification('Por favor, insira um CPF válido.');
+        const cpf = document.getElementById('buyer-cpf').value;
+        if (!isValidCPF(cpf)) {
+            showNotification('CPF inválido. Por favor, verifique e tente novamente.');
             return;
         }
-        
-        // Simulate form submission
-        const submitButton = form.querySelector('.btn-confirmar');
-        const originalText = submitButton.textContent;
-        
-        submitButton.textContent = 'Processando...';
-        submitButton.disabled = true;
-        
-        setTimeout(() => {
-            showNotification(`Obrigado ${giftData.name}! Seu presente de R$ ${parseFloat(giftData.value).toFixed(2)} para "${giftData.gift}" foi registrado com sucesso!`);
-            closeModal();
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-        }, 2000);
+        showNotification('Presente enviado com sucesso! Obrigado pelo carinho.');
+        closeGiftModal();
     });
 }
 
