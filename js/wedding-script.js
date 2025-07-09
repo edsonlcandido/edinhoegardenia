@@ -260,58 +260,88 @@ document.addEventListener('DOMContentLoaded', function() {
 // Galeria de Fotos
 let photos = [
     {
-        src: 'https://picsum.photos/800/800?random=1',
-        caption: 'Nosso primeiro encontro ❤️ Foi amor à primeira vista!',
-        date: '3 semanas atrás',
+        location:'Jundiai, SP',
+        src: 'img/202110 - jundiai.jpg',
+        caption: 'Sempre na melhor companhia ❤️',
+        date: 'outubro de 2021',
         likes: 157
     },
     {
-        src: 'https://picsum.photos/800/800?random=2',
+        location:'Balneario Camburiu, SC',
+        src: 'img/202111 - balneario.jpg',
         caption: 'Viagem inesquecível para a praia 🏖️ Momentos como este são eternos',
         date: '2 semanas atrás',
         likes: 234
     },
     {
+        location:'Sorocaba, SP',
         src: 'https://picsum.photos/800/800?random=3',
         caption: 'Jantar romântico no nosso restaurante favorito 🍷✨',
         date: '1 semana atrás',
         likes: 189
     },
     {
+        location:'Alfenas, MG',
         src: 'https://picsum.photos/800/800?random=4',
         caption: 'Caminhada no parque em um domingo perfeito 🌸',
         date: '6 dias atrás',
         likes: 176
     },
     {
+        location:'Guassussê, CE',
         src: 'https://picsum.photos/800/800?random=5',
         caption: 'Fazendo biscoitos juntos na cozinha 👩‍🍳👨‍🍳',
         date: '4 dias atrás',
         likes: 203
     },
     {
+        location:'Campina Grande, PB',
         src: 'https://picsum.photos/800/800?random=6',
         caption: 'Nosso amor cresce a cada dia que passa 💕',
         date: '2 dias atrás',
         likes: 298
     },
     {
+        location:'Paris, França 😹',
         src: 'https://picsum.photos/800/800?random=7',
         caption: 'Sessão de fotos pré-casamento 📸 Que nervosismo gostoso!',
         date: '1 dia atrás',
         likes: 445
     },
     {
+        location:'Rio de Janeiro, RJ',
         src: 'https://picsum.photos/800/800?random=8',
         caption: 'Escolhendo as alianças juntos 💍 O momento mais especial!',
         date: '1 dia atrás',
         likes: 523
     },
     {
+        location:'São Paulo, SP',
         src: 'https://picsum.photos/800/800?random=9',
         caption: 'Ensaiando para o grande dia 💃🕺',
         date: '12 horas atrás',
         likes: 367
+    },
+    {
+        location:'Jundiaí, SP',
+        src: 'https://picsum.photos/800/800?random=9',
+        caption: 'Ensaiando para o grande dia 💃🕺',
+        date: '12 horas atrás',
+        likes: 367
+    },
+    {
+        location:'Arraial do Cabo, RJ',
+        src: 'https://picsum.photos/800/800?random=10',
+        caption: 'Contagem regressiva para o grande dia! ⏳',
+        date: '6 horas atrás',
+        likes: 412
+    },
+    {
+        location:'São Paulo, SP',
+        src: 'https://picsum.photos/800/800?random=11',
+        caption: 'Últimos preparativos para o casamento 💒',
+        date: '2 horas atrás',
+        likes: 589
     }
 ];
 
@@ -344,6 +374,7 @@ function loadPhotos() {
 
 function openModal(photoIndex) {
     currentPhotoIndex = photoIndex;
+    const location = document.getElementById('photo-location');
     const modal = document.getElementById('instagramModal');
     const modalImage = document.getElementById('modalImage');
     const modalCaption = document.getElementById('modalCaption');
@@ -353,6 +384,7 @@ function openModal(photoIndex) {
     if (modal && photos[photoIndex]) {
         const photo = photos[photoIndex];
         
+        location.textContent = photo.location;
         modalImage.src = photo.src;
         modalCaption.textContent = photo.caption;
         modalDate.textContent = photo.date;
