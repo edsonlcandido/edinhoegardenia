@@ -261,35 +261,35 @@ document.addEventListener('DOMContentLoaded', function() {
 let photos = [
     {
         location:'Jundiai, SP',
-        src: 'img/202110 - jundiai.jpg',
-        caption: 'Sempre na melhor companhia ❤️',
-        date: 'outubro de 2021',
+        src: 'img/20211101 - balneario.jpeg',
+        caption: 'Viagem inesquecível para a praia 🏖️ Momentos como este são eternos',
+        date: 'novembro de 2021',
         likes: 157
     },
     {
         location:'Balneario Camburiu, SC',
-        src: 'img/202111 - balneario.jpg',
-        caption: 'Viagem inesquecível para a praia 🏖️ Momentos como este são eternos',
+        src: 'img/20211102 - balneario.jpg',
+        caption: 'Sempre na melhor companhia ❤️',
         date: 'novembro de 2021',
         likes: 234
     },
     {
         location:'Sorocaba, SP',
-        src: 'img/202112 - sorocaba.jpg',
+        src: 'img/20211201 - sorocaba.jpg',
         caption: 'Sol e piscina com o amor da minha vida ☀️💦',
         date: 'dezembro de 2021',
         likes: 189
     },
     {
         location:'Alfenas, MG',
-        src: 'img/202204 - alfenas.jpg',
-        caption: 'No role pois nos também soomos jovens 😎, RIP carneiro',
+        src: 'img/20220401 - alfenas.jpg',
+        caption: 'No role pois nós também somos jovens 😎, RIP carneiro',
         date: 'abril de 2022',
         likes: 176
     },
     {
         location:'Guassussê, CE',
-        src: 'img/202206 - guassusse.jpg',
+        src: 'img/20220601 - guassusse.jpg',
         caption: 'O beijo mais gostoso do mundo 😘',
         date: 'junho de 2022',
         likes: 203
