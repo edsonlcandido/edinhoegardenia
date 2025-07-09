@@ -122,6 +122,15 @@ const giftItems = [
     }
 ];
 
+// PIX card data
+const pixCard = {
+    id: 'pix',
+    name: "PIX - Contribuição Livre",
+    description: "Faça sua contribuição diretamente via PIX",
+    email: "edsonluizcandido+nubank@gmail.com",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop&auto=format"
+};
+
 // Global variables
 let displayedGifts = [];
 let remainingGifts = [];
@@ -153,6 +162,9 @@ function initializeGiftList() {
     remainingGifts = shuffledGifts.slice(10);
     
     renderGifts(displayedGifts);
+    
+    // Add PIX card at the end
+    renderPixCard();
     
     if (remainingGifts.length > 0) {
         document.getElementById('load-more-btn').style.display = 'block';
@@ -194,11 +206,83 @@ function createGiftCard(gift) {
     return card;
 }
 
+// Create PIX card element
+function createPixCard() {
+    const card = document.createElement('div');
+    card.className = 'gift-card pix-card';
+    card.setAttribute('data-card-type', 'pix');
+    card.innerHTML = `
+        <div class="gift-image">
+            <img src="${pixCard.image}" alt="${pixCard.name}" loading="lazy">
+        </div>
+        <div class="gift-content">
+            <h3 class="gift-name">${pixCard.name}</h3>
+            <p class="gift-description">${pixCard.description}</p>
+            <div class="pix-info">
+                <p class="pix-email">${pixCard.email}</p>
+                <div class="qr-code-placeholder">
+                    <svg width="80" height="80" viewBox="0 0 100 100" fill="currentColor">
+                        <rect x="0" y="0" width="20" height="20"/>
+                        <rect x="25" y="0" width="15" height="15"/>
+                        <rect x="60" y="0" width="20" height="20"/>
+                        <rect x="85" y="0" width="15" height="15"/>
+                        <rect x="0" y="25" width="15" height="15"/>
+                        <rect x="20" y="25" width="20" height="20"/>
+                        <rect x="45" y="25" width="10" height="10"/>
+                        <rect x="60" y="25" width="15" height="15"/>
+                        <rect x="80" y="25" width="20" height="20"/>
+                        <rect x="0" y="45" width="10" height="10"/>
+                        <rect x="15" y="45" width="25" height="15"/>
+                        <rect x="45" y="45" width="10" height="10"/>
+                        <rect x="60" y="45" width="10" height="10"/>
+                        <rect x="75" y="45" width="25" height="15"/>
+                        <rect x="0" y="65" width="15" height="15"/>
+                        <rect x="20" y="65" width="20" height="20"/>
+                        <rect x="45" y="65" width="15" height="15"/>
+                        <rect x="65" y="65" width="15" height="15"/>
+                        <rect x="85" y="65" width="15" height="15"/>
+                        <rect x="0" y="85" width="20" height="15"/>
+                        <rect x="25" y="85" width="15" height="15"/>
+                        <rect x="45" y="85" width="10" height="15"/>
+                        <rect x="60" y="85" width="20" height="15"/>
+                        <rect x="85" y="85" width="15" height="15"/>
+                    </svg>
+                </div>
+            </div>
+            <button class="btn-gift btn-copy-pix" onclick="copyPixEmail()">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                </svg>
+                Copiar PIX
+            </button>
+        </div>
+    `;
+    return card;
+}
+
+// Render PIX card
+function renderPixCard() {
+    const giftList = document.getElementById('gift-list');
+    const pixCardElement = createPixCard();
+    giftList.appendChild(pixCardElement);
+}
+
 // Load more gifts
 function loadMoreGifts() {
+    // Remove the existing PIX card first
+    const existingPixCard = document.querySelector('[data-card-type="pix"]');
+    if (existingPixCard) {
+        existingPixCard.remove();
+    }
+    
     renderGifts(remainingGifts);
     displayedGifts = [...displayedGifts, ...remainingGifts];
     remainingGifts = [];
+    
+    // Add PIX card again at the end
+    renderPixCard();
+    
     document.getElementById('load-more-btn').style.display = 'none';
 }
 
@@ -323,6 +407,90 @@ function isValidCPF(cpf) {
     if (digit2 > 9) digit2 = 0;
     
     return parseInt(cpf.charAt(9)) === digit1 && parseInt(cpf.charAt(10)) === digit2;
+}
+
+// Copy PIX email function
+function copyPixEmail() {
+    navigator.clipboard.writeText(pixCard.email).then(function() {
+        showNotification('PIX copiado para a área de transferência!');
+    }).catch(function(err) {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = pixCard.email;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showNotification('PIX copiado para a área de transferência!');
+    });
+}
+
+// Show notification function
+function showNotification(message) {
+    // Remove any existing notification
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #d4af37;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 10000;
+        font-weight: 600;
+        animation: slideIn 0.3s ease-out;
+    `;
+    
+    // Add animation styles if not already added
+    if (!document.querySelector('#notification-styles')) {
+        const style = document.createElement('style');
+        style.id = 'notification-styles';
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 300);
+    }, 3000);
 }
 
 console.log('Gifts script loaded successfully!');
