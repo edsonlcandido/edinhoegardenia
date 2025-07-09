@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Galeria de Fotos
 let photos = [
     {
-        location:'Jundiai, SP',
+        location:'Balneario Camburiu, SC',
         src: 'img/20211101 - balneario.jpeg',
         caption: 'Viagem inesquecível para a praia 🏖️ Momentos como este são eternos',
         date: 'novembro de 2021',

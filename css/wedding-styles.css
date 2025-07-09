@@ -649,7 +649,6 @@ body {
 .modal-content {
     background-color: #fff;
     margin: 5% auto;
-    padding: 2rem;
     border-radius: 15px;
     width: 90%;
     max-width: 500px;
@@ -1217,12 +1216,6 @@ body {
     .presentes-hero p {
         font-size: 1.1rem;
         padding: 0 1rem;
-    }
-    
-    .modal-content {
-        margin: 10% auto;
-        padding: 1.5rem;
-        width: 95%;
     }
 }
 
