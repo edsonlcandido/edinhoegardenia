@@ -214,7 +214,7 @@ function createPixCard() {
     card.setAttribute('data-card-type', 'pix');
     card.innerHTML = `
         <div class="gift-content" style="display: flex; flex-direction: column; align-items: center; flex-grow: 1; justify-content: flex-end;">
-            <img src="img/pix-qrcode.png" alt="QR Code Pix" style="width: 190px; height: 190px; margin-bottom: 12px; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.08);">
+            <img id="pix-qrcode-img" src="img/pix-qrcode.png" alt="QR Code Pix" style="width: 190px; height: 190px; margin-bottom: 12px; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); cursor: pointer;">
             <h3 class="gift-name">PIX - Presente Livre</h3>
             <button id="pix-copia-cola-btn" class="btn-gift" style="margin-top: auto; align-self: center; border-radius: 25px;">Pix copia e cola</button>
         </div>
@@ -222,8 +222,12 @@ function createPixCard() {
     // Adiciona evento de cópia ao botão
     setTimeout(() => {
         const btn = card.querySelector('#pix-copia-cola-btn');
+        const img = card.querySelector('#pix-qrcode-img');
         if (btn) {
             btn.addEventListener('click', copyPixEmail);
+        }
+        if (img) {
+            img.addEventListener('click', copyPixEmail);
         }
     }, 0);
     return card;
