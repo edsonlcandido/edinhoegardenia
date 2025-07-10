@@ -4,19 +4,19 @@ const giftItems = [
         id: 1,
         name: "Luau na praia com coquetéis tropicais",
         description: "Uma noite mágica na praia com drinks tropicais e música",
-        image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1596326270763-87f26e0f9225?w=400&h=300&fit=crop&auto=format"
     },
     {
         id: 2,
         name: "Aula de mergulho para descobrir o fundo do mar",
         description: "Explorar as belezas submarinas com instrutores especializados",
-        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop&auto=format"
     },
     {
         id: 3,
         name: "Aulas de stand-up paddle",
         description: "Aventura aquática praticando SUP em águas cristalinas",
-        image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1629168924019-d2ea8caf5302?w=400&h=300&fit=crop&auto=format"
     },
     {
         id: 4,
@@ -46,7 +46,7 @@ const giftItems = [
         id: 8,
         name: "Visita a um ponto turístico icônico",
         description: "Conhecer os principais pontos turísticos do destino",
-        image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop&auto=format"
+        image: "https://plus.unsplash.com/premium_photo-1681828170050-e5c448b6bafe?w=400&h=300&fit=crop&auto=format"
     },
     {
         id: 9,
@@ -58,25 +58,25 @@ const giftItems = [
         id: 10,
         name: "Spa day para renovar as energias",
         description: "Dia completo de cuidados e relaxamento no spa",
-        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1610289982320-3891f7c9fd6d?w=400&h=300&fit=crop&auto=format"
     },
     {
         id: 11,
         name: "Jantar romântico em um restaurante badalado",
         description: "Experiência gastronômica refinada em ambiente romântico",
-        image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1575390130709-7b5fee2919e4?w=400&h=300&fit=crop&auto=format"
     },
     {
         id: 12,
         name: "Champanhe e frutas no quarto para celebrar a chegada",
         description: "Recepção especial com champanhe e frutas frescas",
-        image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1729719083582-83d296a1782f?w=400&h=300&fit=crop&auto=format"
     },
     {
         id: 13,
         name: "Café da manhã na cama com vista para o mar",
         description: "Manhãs especiais com café servido no quarto com vista",
-        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1683260041390-e13c859f4b7b?w=400&h=300&fit=crop&auto=format"
     },
     {
         id: 14,
@@ -88,7 +88,7 @@ const giftItems = [
         id: 15,
         name: "Acesso completo ao frigobar do hotel (sem culpa!)",
         description: "Liberação total do frigobar para aproveitar sem preocupações",
-        image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1540961403310-79825242906e?w=400&h=300&fit=crop&auto=format"
     },
     {
         id: 16,
@@ -112,13 +112,13 @@ const giftItems = [
         id: 19,
         name: "Ajuda para pagar o excesso de bagagem da noiva",
         description: "Porque toda noiva precisa levar aquele look extra especial!",
-        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1639597786247-5a64d8c62ebe?w=400&h=300&fit=crop&auto=format"
     },
     {
         id: 20,
         name: "Fundo para imprevistos e surpresas",
         description: "Reserva para momentos espontâneos e surpresas especiais",
-        image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1599585183326-87b1fff61c33?w=400&h=300&fit=crop&auto=format"
     }
 ];
 
@@ -128,6 +128,7 @@ const pixCard = {
     name: "PIX - Contribuição Livre",
     description: "Faça sua contribuição diretamente via PIX",
     email: "edsonluizcandido+nubank@gmail.com",
+    copiaCola:"00020126550014BR.GOV.BCB.PIX0133edsonluizcandido+nubank@gmail.com5204000053039865802BR5918Edson Luiz Candido6007Jundiai62070503***630465B5",
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop&auto=format"
 };
 
@@ -212,52 +213,19 @@ function createPixCard() {
     card.className = 'gift-card pix-card';
     card.setAttribute('data-card-type', 'pix');
     card.innerHTML = `
-        <div class="gift-image">
-            <img src="${pixCard.image}" alt="${pixCard.name}" loading="lazy">
-        </div>
-        <div class="gift-content">
-            <h3 class="gift-name">${pixCard.name}</h3>
-            <p class="gift-description">${pixCard.description}</p>
-            <div class="pix-info">
-                <p class="pix-email">${pixCard.email}</p>
-                <div class="qr-code-placeholder">
-                    <svg width="80" height="80" viewBox="0 0 100 100" fill="currentColor">
-                        <rect x="0" y="0" width="20" height="20"/>
-                        <rect x="25" y="0" width="15" height="15"/>
-                        <rect x="60" y="0" width="20" height="20"/>
-                        <rect x="85" y="0" width="15" height="15"/>
-                        <rect x="0" y="25" width="15" height="15"/>
-                        <rect x="20" y="25" width="20" height="20"/>
-                        <rect x="45" y="25" width="10" height="10"/>
-                        <rect x="60" y="25" width="15" height="15"/>
-                        <rect x="80" y="25" width="20" height="20"/>
-                        <rect x="0" y="45" width="10" height="10"/>
-                        <rect x="15" y="45" width="25" height="15"/>
-                        <rect x="45" y="45" width="10" height="10"/>
-                        <rect x="60" y="45" width="10" height="10"/>
-                        <rect x="75" y="45" width="25" height="15"/>
-                        <rect x="0" y="65" width="15" height="15"/>
-                        <rect x="20" y="65" width="20" height="20"/>
-                        <rect x="45" y="65" width="15" height="15"/>
-                        <rect x="65" y="65" width="15" height="15"/>
-                        <rect x="85" y="65" width="15" height="15"/>
-                        <rect x="0" y="85" width="20" height="15"/>
-                        <rect x="25" y="85" width="15" height="15"/>
-                        <rect x="45" y="85" width="10" height="15"/>
-                        <rect x="60" y="85" width="20" height="15"/>
-                        <rect x="85" y="85" width="15" height="15"/>
-                    </svg>
-                </div>
-            </div>
-            <button class="btn-gift btn-copy-pix" onclick="copyPixEmail()">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                </svg>
-                Copiar PIX
-            </button>
+        <div class="gift-content" style="display: flex; flex-direction: column; align-items: center; flex-grow: 1; justify-content: flex-end;">
+            <img src="img/pix-qrcode.png" alt="QR Code Pix" style="width: 190px; height: 190px; margin-bottom: 12px; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.08);">
+            <h3 class="gift-name">PIX - Presente Livre</h3>
+            <button id="pix-copia-cola-btn" class="btn-gift" style="margin-top: auto; align-self: center; border-radius: 25px;">Pix copia e cola</button>
         </div>
     `;
+    // Adiciona evento de cópia ao botão
+    setTimeout(() => {
+        const btn = card.querySelector('#pix-copia-cola-btn');
+        if (btn) {
+            btn.addEventListener('click', copyPixEmail);
+        }
+    }, 0);
     return card;
 }
 
@@ -394,12 +362,12 @@ function isValidCPF(cpf) {
 
 // Copy PIX email function
 function copyPixEmail() {
-    navigator.clipboard.writeText(pixCard.email).then(function() {
+    navigator.clipboard.writeText(pixCard.copiaCola).then(function() {
         showNotification('PIX copiado para a área de transferência!');
     }).catch(function(err) {
         // Fallback for older browsers
         const textArea = document.createElement('textarea');
-        textArea.value = pixCard.email;
+        textArea.value = pixCard.copiaCola;
         document.body.appendChild(textArea);
         textArea.select();
         document.execCommand('copy');
