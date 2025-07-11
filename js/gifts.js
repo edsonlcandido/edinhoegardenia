@@ -128,7 +128,7 @@ const pixCard = {
     name: "PIX - Contribuição Livre",
     description: "Faça sua contribuição diretamente via PIX",
     email: "edsonluizcandido+nubank@gmail.com",
-    copiaCola:"00020126550014BR.GOV.BCB.PIX0133edsonluizcandido+nubank@gmail.com5204000053039865802BR5918Edson Luiz Candido6007Jundiai62070503***630465B5",
+    copiaCola: "00020126550014BR.GOV.BCB.PIX0133edsonluizcandido+nubank@gmail.com5204000053039865802BR5918Edson Luiz Candido6007Jundiai62070503***630465B5",
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop&auto=format"
 };
 
@@ -138,7 +138,7 @@ let remainingGifts = [];
 let currentGift = null;
 
 // Initialize gift list when page loads
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById('gift-list')) {
         initializeGiftList();
         setupGiftModal();
@@ -161,16 +161,16 @@ function initializeGiftList() {
     const shuffledGifts = shuffleArray(giftItems);
     displayedGifts = shuffledGifts.slice(0, 10);
     remainingGifts = shuffledGifts.slice(10);
-    
+
     renderGifts(displayedGifts);
-    
+
     // Add PIX card at the end
     renderPixCard();
-    
+
     if (remainingGifts.length > 0) {
         document.getElementById('load-more-btn').style.display = 'block';
     }
-    
+
     // Setup load more button
     document.getElementById('load-more-btn').addEventListener('click', loadMoreGifts);
 }
@@ -178,7 +178,7 @@ function initializeGiftList() {
 // Render gifts to the page
 function renderGifts(gifts) {
     const giftList = document.getElementById('gift-list');
-    
+
     gifts.forEach(gift => {
         const giftCard = createGiftCard(gift);
         giftList.appendChild(giftCard);
@@ -247,14 +247,14 @@ function loadMoreGifts() {
     if (existingPixCard) {
         existingPixCard.remove();
     }
-    
+
     renderGifts(remainingGifts);
     displayedGifts = [...displayedGifts, ...remainingGifts];
     remainingGifts = [];
-    
+
     // Add PIX card again at the end
     renderPixCard();
-    
+
     document.getElementById('load-more-btn').style.display = 'none';
 }
 
@@ -276,13 +276,13 @@ function setupGiftModal() {
     // Fecha ao clicar no X
     closeBtn.addEventListener('click', closeGiftModal);
     // Fecha ao clicar fora do conteúdo
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
         if (e.target === modal) {
             closeGiftModal();
         }
     });
     // Fecha com tecla ESC
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && modal.style.display === 'block') {
             closeGiftModal();
         }
@@ -302,7 +302,7 @@ function setupGiftFormValidation() {
     const form = document.getElementById('gift-form');
     // CPF formatting
     const cpfInput = document.getElementById('buyer-cpf');
-    cpfInput.addEventListener('input', function(e) {
+    cpfInput.addEventListener('input', function (e) {
         let value = e.target.value.replace(/\D/g, '');
         if (value.length > 11) value = value.slice(0, 11);
         value = value.replace(/(\d{3})(\d)/, '$1.$2');
@@ -312,7 +312,7 @@ function setupGiftFormValidation() {
     });
     // Phone formatting
     const phoneInput = document.getElementById('buyer-phone');
-    phoneInput.addEventListener('input', function(e) {
+    phoneInput.addEventListener('input', function (e) {
         let value = e.target.value.replace(/\D/g, '');
         if (value.length > 11) value = value.slice(0, 11);
         if (value.length > 10) {
@@ -327,48 +327,93 @@ function setupGiftFormValidation() {
         e.target.value = value;
     });
     // Form submission
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function (e) {
         e.preventDefault();
         const cpf = document.getElementById('buyer-cpf').value;
+        const phone = document.getElementById('buyer-phone').value;
+        const guestName = document.getElementById('buyer-name').value;
+        const giftName = currentGift ? currentGift.name : '';
+        const giftValue = document.getElementById('gift-value').value;
+        const btn = form.querySelector('.btn-confirmar');
         if (!isValidCPF(cpf)) {
             showNotification('CPF inválido. Por favor, verifique e tente novamente.');
             return;
         }
-        showNotification('Presente enviado com sucesso! Obrigado pelo carinho.');
-        closeGiftModal();
+        // Animação dos três pontinhos
+        let dotCount = 0;
+        let originalText = btn.textContent;
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+        btn.style.pointerEvents = 'none';
+        btn.textContent = 'Processando';
+        const interval = setInterval(() => {
+            dotCount = (dotCount + 1) % 4;
+            btn.textContent = 'Processando' + '.'.repeat(dotCount);
+        }, 400);
+        const endpoint = 'https://www.edsonegardenia.com/webhook/comprar-presente';
+        const params = new URLSearchParams({
+            nome_produto: giftName,
+            valor: giftValue,
+            convidado: guestName,
+            cpf: cpf,
+            celular: phone
+        });
+        try {
+            const response = await fetch(`${endpoint}?${params.toString()}`);
+            if (!response.ok) throw new Error('Erro ao gerar fatura');
+            const data = await response.json();
+            clearInterval(interval);
+            btn.textContent = originalText;
+            btn.disabled = false;
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = '';
+            if (data && data.redirect) {
+                window.location.href = data.redirect;
+            } else {
+                showNotification('Erro ao gerar fatura. Tente novamente.');
+            }
+        } catch (err) {
+            clearInterval(interval);
+            btn.textContent = originalText;
+            btn.disabled = false;
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = '';
+            showNotification('Erro ao enviar requisição. Tente novamente.');
+        }
     });
+
 }
 
 // CPF validation function
 function isValidCPF(cpf) {
     cpf = cpf.replace(/\D/g, '');
-    
+
     if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
         return false;
     }
-    
+
     let sum = 0;
     for (let i = 0; i < 9; i++) {
         sum += parseInt(cpf.charAt(i)) * (10 - i);
     }
     let digit1 = 11 - (sum % 11);
     if (digit1 > 9) digit1 = 0;
-    
+
     sum = 0;
     for (let i = 0; i < 10; i++) {
         sum += parseInt(cpf.charAt(i)) * (11 - i);
     }
     let digit2 = 11 - (sum % 11);
     if (digit2 > 9) digit2 = 0;
-    
+
     return parseInt(cpf.charAt(9)) === digit1 && parseInt(cpf.charAt(10)) === digit2;
 }
 
 // Copy PIX email function
 function copyPixEmail() {
-    navigator.clipboard.writeText(pixCard.copiaCola).then(function() {
+    navigator.clipboard.writeText(pixCard.copiaCola).then(function () {
         showNotification('PIX copiado para a área de transferência!');
-    }).catch(function(err) {
+    }).catch(function (err) {
         // Fallback for older browsers
         const textArea = document.createElement('textarea');
         textArea.value = pixCard.copiaCola;
@@ -387,7 +432,7 @@ function showNotification(message) {
     if (existingNotification) {
         existingNotification.remove();
     }
-    
+
     // Create notification element
     const notification = document.createElement('div');
     notification.className = 'notification';
@@ -405,7 +450,7 @@ function showNotification(message) {
         font-weight: 600;
         animation: slideIn 0.3s ease-out;
     `;
-    
+
     // Add animation styles if not already added
     if (!document.querySelector('#notification-styles')) {
         const style = document.createElement('style');
@@ -434,9 +479,9 @@ function showNotification(message) {
         `;
         document.head.appendChild(style);
     }
-    
+
     document.body.appendChild(notification);
-    
+
     // Auto remove after 3 seconds
     setTimeout(() => {
         notification.style.animation = 'slideOut 0.3s ease-out';
