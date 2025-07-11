@@ -368,6 +368,7 @@ function setupGiftFormValidation() {
             btn.style.opacity = '1';
             btn.style.pointerEvents = '';
             if (data && data.redirect) {
+                form.reset();
                 window.location.href = data.redirect;
             } else {
                 showNotification('Erro ao gerar fatura. Tente novamente.');
