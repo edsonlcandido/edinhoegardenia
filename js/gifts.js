@@ -397,7 +397,7 @@ function showNotification(message) {
         padding: 15px 20px;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 10000;
+        z-index: 30000;
         font-weight: 600;
         animation: slideIn 0.3s ease-out;
     `;

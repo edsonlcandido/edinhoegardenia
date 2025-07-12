@@ -154,7 +154,7 @@ function showNotification(message) {
         padding: 15px 25px;
         border-radius: 8px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        z-index: 10000;
+        z-index: 30000;
         font-weight: 600;
         animation: slideIn 0.3s ease-out;
     `;
