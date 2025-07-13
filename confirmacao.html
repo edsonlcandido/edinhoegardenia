@@ -1,73 +1,218 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Confirmação de Presença - Edinho & Gardenia</title>
-    <link rel="stylesheet" href="css/wedding-styles.css?v=202507092330">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="css/wedding-styles.css?v=202507092330" />
+    <style>
+      /* Menu responsivo com animação de slide */
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        margin-left: auto;
+        z-index: 101;
+      }
+      .menu-icon {
+        width: 28px;
+        height: 3px;
+        background: #d4af37;
+        display: block;
+        position: relative;
+        border-radius: 2px;
+        transition: background 0.3s;
+      }
+      .menu-icon::before,
+      .menu-icon::after {
+        content: "";
+        width: 28px;
+        height: 3px;
+        background: #d4af37;
+        position: absolute;
+        left: 0;
+        border-radius: 2px;
+        transition: top 0.3s, transform 0.3s, background 0.3s;
+      }
+      .menu-icon::before {
+        top: -8px;
+      }
+      .menu-icon::after {
+        top: 8px;
+      }
+      .menu-toggle.open .menu-icon {
+        background: transparent;
+      }
+      .menu-toggle.open .menu-icon::before {
+        top: 0;
+        transform: rotate(45deg);
+        background: #d4af37;
+      }
+      .menu-toggle.open .menu-icon::after {
+        top: 0;
+        transform: rotate(-45deg);
+        background: #d4af37;
+      }
+      @media (max-width: 900px) {
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: 0;
+          height: 100vh;
+          width: 100vw;
+          background: rgba(255, 255, 255, 0.98);
+          box-shadow: -2px 0 12px rgba(0, 0, 0, 0.1);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 32px;
+          padding: 0;
+          margin: 0;
+          list-style: none;
+          transform: translateX(100vw);
+          transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+          display: flex;
+          z-index: 100;
+        }
+        .nav-links.open {
+          transform: translateX(0);
+        }
+        .nav-links li {
+          width: 100%;
+          text-align: right;
+          padding-right: 32px;
+        }
+        .nav-links a {
+          font-size: 1.5rem;
+          color: #d4af37;
+          font-weight: 600;
+          text-decoration: none;
+          padding: 18px 0;
+          display: block;
+          transition: background 0.2s, color 0.2s;
+        }
+        .nav-links a:hover {
+          background: #f7f7f7;
+          color: #bfa233;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .nav {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Header -->
     <header class="header">
-        <nav class="nav">
-            <div class="logo">E & G</div>
-            <ul class="nav-links">
-                <li><a href="/">Início</a></li>
-                <li><a href="/#nossa-historia">Nossa História</a></li>
-                <li><a href="/#presentes">Presentes</a></li>
-                <li><a href="/#galeria">Galeria</a></li> 
-                <li><a href="/#evento">Evento</a></li>                
-                <li><a href="confirmacao.html">Confirmação</a></li>
-            </ul>
-        </nav>
+      <nav class="nav">
+        <div class="logo">E <span class="logo-amp">&</span> G</div>
+        <button
+          class="menu-toggle"
+          aria-label="Abrir menu"
+          onclick="toggleMenu()"
+        >
+          <span class="menu-icon"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/#nossa-historia">Nossa História</a></li>
+          <li><a href="/#galeria">Galeria</a></li>
+          <li><a href="/#presentes">Presentes</a></li>
+          <li><a href="/#evento">Evento</a></li>
+          <li><a href="confirmacao.html">Confirmação</a></li>
+        </ul>
+      </nav>
     </header>
+    <script>
+      function toggleMenu() {
+        var navLinks = document.querySelector(".nav-links");
+        var menuToggle = document.querySelector(".menu-toggle");
+        navLinks.classList.toggle("open");
+        menuToggle.classList.toggle("open");
+      }
+      // Fecha o menu ao clicar em um link (mobile)
+      document.addEventListener("DOMContentLoaded", function () {
+        var links = document.querySelectorAll(".nav-links a");
+        var menuToggle = document.querySelector(".menu-toggle");
+        links.forEach(function (link) {
+          link.addEventListener("click", function () {
+            var navLinks = document.querySelector(".nav-links");
+            navLinks.classList.remove("open");
+            menuToggle.classList.remove("open");
+          });
+        });
+      });
+    </script>
 
     <!-- Confirmação -->
     <section id="confirmacao" class="confirmacao">
-        <div class="container">
-            <h2>Confirmação de Presença</h2>
-            <p>Por favor, confirme sua presença</p>
-            <form class="confirmacao-form">
-                <div class="form-group">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="telefone">Telefone</label>
-                    <input type="tel" id="telefone" name="telefone" required>
-                </div>
-                <div class="form-group">
-                    <label for="acompanhantes">Número de Acompanhantes</label>
-                    <select id="acompanhantes" name="acompanhantes" required>
-                        <option value="">Selecione</option>
-                        <option value="0">Apenas eu</option>
-                        <option value="1">1 acompanhante</option>
-                        <option value="2">2 acompanhantes</option>
-                        <option value="3">3 acompanhantes</option>
-                        <option value="4">4 acompanhantes</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="mensagem">Mensagem para os Noivos</label>
-                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Deixe uma mensagem especial..."></textarea>
-                </div>
-                <button type="submit" class="btn-confirmar">Confirmar Presença</button>
-            </form>
-        </div>
+      <div class="container">
+        <h2>Confirmação de Presença</h2>
+        <p>Por favor, confirme sua presença</p>
+        <form class="confirmacao-form">
+          <div class="form-group">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone" required />
+          </div>
+          <div class="form-group">
+            <label for="acompanhantes">Número de Acompanhantes</label>
+            <select id="acompanhantes" name="acompanhantes" required>
+              <option value="">Selecione</option>
+              <option value="0">Apenas eu</option>
+              <option value="1">1 acompanhante</option>
+              <option value="2">2 acompanhantes</option>
+              <option value="3">3 acompanhantes</option>
+              <option value="4">4 acompanhantes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem para os Noivos</label>
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              rows="4"
+              placeholder="Deixe uma mensagem especial..."
+            ></textarea>
+          </div>
+          <button type="submit" class="btn-confirmar">
+            Confirmar Presença
+          </button>
+        </form>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Edinho & Gardenia. Feito com ❤️ para nosso grande dia.</p>
-        </div>
+      <div class="container">
+        <p>Edinho & Gardenia. Feito com ❤️ para nosso grande dia.</p>
+        <p>
+          <small
+            >Produzido por
+            <a href="https://www.ehtudo.app">Eh!Tudo.app</a></small
+          >
+        </p>
+      </div>
     </footer>
 
     <script src="js/wedding-script.js?v=202509072325"></script>
-</body>
+  </body>
 </html>
