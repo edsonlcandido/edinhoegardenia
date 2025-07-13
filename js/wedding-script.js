@@ -200,35 +200,57 @@ function showNotification(message) {
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.confirmacao-form');
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(form);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-            
-            // Basic validation
-            if (!data.nome || !data.email || !data.telefone || !data.acompanhantes) {
+            const nome = document.getElementById('nome').value.trim();
+            const quantidade_pessoas = document.getElementById('acompanhantes').value;
+            const mensagem = document.getElementById('mensagem').value.trim();
+
+            // Validação básica
+            if (!nome || !quantidade_pessoas) {
                 showNotification('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
-            
-            // Simulate form submission
+
             const submitButton = form.querySelector('.btn-confirmar');
             const originalText = submitButton.textContent;
-            
             submitButton.textContent = 'Enviando...';
             submitButton.disabled = true;
-            
-            setTimeout(() => {
-                showNotification('Confirmação enviada com sucesso!');
-                form.reset();
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            }, 2000);
+
+            try {
+                const res1 = await fetch('/api/collections/confirmacao/records', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        nome,
+                        quantidade_pessoas: quantidade_pessoas
+                    })
+                });
+
+                const res2 = await fetch('/api/collections/messages/records', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        nome,
+                        message: mensagem
+                    })
+                });
+
+                if (res1.ok && res2.ok) {
+                    showNotification('Confirmação enviada com sucesso!');
+                    form.reset();
+                } else {
+                    showNotification('Ocorreu um erro ao enviar sua confirmação. Tente novamente.');
+                }
+            } catch (err) {
+                showNotification('Erro de conexão. Tente novamente mais tarde.');
+            }
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
         });
     }
 });
