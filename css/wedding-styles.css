@@ -262,7 +262,7 @@ body {
 
 /* Nossa História */
 .nossa-historia {
-    padding: 100px 0;
+    padding: 50px 0 50px 0;
     background: #f8f9fa;
 }
 
@@ -339,7 +339,7 @@ body {
 
 /* Evento */
 .evento {
-    padding: 100px 0;
+    padding: 50px 0 50px 0;
     background: #fff;
 }
 
@@ -399,7 +399,7 @@ body {
 
 /* Presentes */
 .presentes {
-    padding: 100px 0;
+    padding: 50px 0 50px 0;
     background: #f8f9fa;
 }
 
@@ -838,7 +838,7 @@ body {
 
 /* Galeria de Fotos */
 .galeria {
-    padding: 100px 0;
+    padding: 50px 0 50px 0;
     background: #f8f9fa;
 }
 
