@@ -4,121 +4,162 @@ const giftItems = [
         id: 1,
         name: "Luau na praia com coquetéis tropicais",
         description: "Uma noite mágica na praia com drinks tropicais e música",
-        image: "https://images.unsplash.com/photo-1596326270763-87f26e0f9225?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1596326270763-87f26e0f9225?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkvXCDsbipPNlDZERSGwRKL",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
+    
     },
     {
         id: 2,
         name: "Aula de mergulho para descobrir o fundo do mar",
         description: "Explorar as belezas submarinas com instrutores especializados",
-        image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkvcqDsbipPNlDZoJCLPnbb",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 3,
         name: "Aulas de stand-up paddle",
         description: "Aventura aquática praticando SUP em águas cristalinas",
-        image: "https://images.unsplash.com/photo-1629168924019-d2ea8caf5302?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1629168924019-d2ea8caf5302?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkveGDsbipPNlDZOPsXNOd4",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 4,
         name: "Excursão de barco ao pôr do sol",
         description: "Passeio romântico de barco com vista para o pôr do sol",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1722547083154-a6a3038d43b3?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkvieDsbipPNlDZuc8TjbIo",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 5,
         name: "Trilha com vista panorâmica",
         description: "Caminhada em trilhas com vistas deslumbrantes da natureza",
-        image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkvjiDsbipPNlDZVM3aV1tf",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 6,
         name: "Aula de culinária local para aprender os segredos da gastronomia",
         description: "Experiência gastronômica aprendendo pratos típicos locais",
-        image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkvlADsbipPNlDZdMYwhTIm",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 7,
         name: "Sessão de fotos profissional para registrar a lua de mel",
         description: "Registros profissionais dos momentos especiais da viagem",
-        image: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1Rkvo1DsbipPNlDZoTR2Rw73",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 8,
         name: "Visita a um ponto turístico icônico",
         description: "Conhecer os principais pontos turísticos do destino",
-        image: "https://plus.unsplash.com/premium_photo-1681828170050-e5c448b6bafe?w=400&h=300&fit=crop&auto=format"
+        image: "https://plus.unsplash.com/premium_photo-1681828170050-e5c448b6bafe?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkvyWDsbipPNlDZ43oTadCe",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 9,
         name: "Massagem relaxante para o casal",
         description: "Momento de relaxamento e conexão com massagens especiais",
-        image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkvzaDsbipPNlDZEtAVTvhr",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 10,
         name: "Spa day para renovar as energias",
         description: "Dia completo de cuidados e relaxamento no spa",
-        image: "https://images.unsplash.com/photo-1610289982320-3891f7c9fd6d?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1610289982320-3891f7c9fd6d?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1Rkw0NDsbipPNlDZYeyqgpEu",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 11,
         name: "Jantar romântico em um restaurante badalado",
         description: "Experiência gastronômica refinada em ambiente romântico",
-        image: "https://images.unsplash.com/photo-1575390130709-7b5fee2919e4?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1575390130709-7b5fee2919e4?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1Rkw1mDsbipPNlDZcH6Y9kAA",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 12,
         name: "Champanhe e frutas no quarto para celebrar a chegada",
         description: "Recepção especial com champanhe e frutas frescas",
-        image: "https://images.unsplash.com/photo-1729719083582-83d296a1782f?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1729719083582-83d296a1782f?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1Rkw8mDsbipPNlDZfY9ALGHh",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 13,
         name: "Café da manhã na cama com vista para o mar",
         description: "Manhãs especiais com café servido no quarto com vista",
-        image: "https://images.unsplash.com/photo-1683260041390-e13c859f4b7b?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1683260041390-e13c859f4b7b?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkpZ4DsbipPNlDZNO4Gx4ap",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 14,
         name: "Upgrade para primeira classe no voo",
         description: "Viagem confortável em primeira classe",
-        image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkwA9DsbipPNlDZ4d2Gq5mT",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 15,
         name: "Acesso completo ao frigobar do hotel (sem culpa!)",
         description: "Liberação total do frigobar para aproveitar sem preocupações",
-        image: "https://images.unsplash.com/photo-1540961403310-79825242906e?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1540961403310-79825242906e?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkwBHDsbipPNlDZA3RYiqtz",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 16,
         name: "Cota para passagens aéreas (ida ou volta)",
         description: "Contribuição para as passagens aéreas da lua de mel",
-        image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkwCIDsbipPNlDZG6tfwJO7",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 17,
         name: "Diária de hospedagem em hotel",
         description: "Noites de estadia em hotéis especiais durante a viagem",
-        image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkwDKDsbipPNlDZCTsaNSjV",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 18,
         name: "Aluguel de carro para explorar o destino",
         description: "Liberdade para explorar o destino com carro alugado",
-        image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkwEjDsbipPNlDZxT3CDl4U",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 19,
         name: "Ajuda para pagar o excesso de bagagem da noiva",
         description: "Porque toda noiva precisa levar aquele look extra especial!",
-        image: "https://images.unsplash.com/photo-1639597786247-5a64d8c62ebe?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1639597786247-5a64d8c62ebe?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkwFhDsbipPNlDZQ8IGPh9j",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
         id: 20,
         name: "Fundo para imprevistos e surpresas",
         description: "Reserva para momentos espontâneos e surpresas especiais",
-        image: "https://images.unsplash.com/photo-1599585183326-87b1fff61c33?w=400&h=300&fit=crop&auto=format"
+        image: "https://images.unsplash.com/photo-1599585183326-87b1fff61c33?w=400&h=300&fit=crop&auto=format",
+        stripeId: "buy_btn_1RkwH8DsbipPNlDZSrZVOeFT",
+        stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     }
 ];
 
