@@ -304,6 +304,20 @@ function openGiftModal(giftId) {
     currentGift = giftItems.find(gift => gift.id === giftId);
     if (currentGift) {
         document.getElementById('modal-gift-name').textContent = currentGift.name;
+        // Seção Stripe
+        const stripeContainer = document.getElementById('stripe-buy-btn-container');
+        stripeContainer.innerHTML = "";
+        if (currentGift.stripeId && currentGift.stripeKey) {
+            // Remove qualquer botão Stripe existente
+            while (stripeContainer.firstChild) {
+                stripeContainer.removeChild(stripeContainer.firstChild);
+            }
+            // Cria o elemento Stripe
+            const stripeBtn = document.createElement("stripe-buy-button");
+            stripeBtn.setAttribute("buy-button-id", currentGift.stripeId);
+            stripeBtn.setAttribute("publishable-key", currentGift.stripeKey);
+            stripeContainer.appendChild(stripeBtn);
+        }
         const modal = document.getElementById('gift-modal');
         modal.classList.add('show');
         document.body.style.overflow = 'hidden';
@@ -409,8 +423,11 @@ function setupGiftFormValidation() {
             btn.style.opacity = '1';
             btn.style.pointerEvents = '';
             if (data && data.redirect) {
+                showNotification('Redirecionando para o pagamento via pix');
                 form.reset();
-                window.location.href = data.redirect;
+                setTimeout(() => {
+                  window.location.href = data.redirect;
+                }, 1200);
             } else {
                 showNotification('Erro ao gerar fatura. Tente novamente.');
             }

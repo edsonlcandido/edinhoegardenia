@@ -1,3 +1,24 @@
+/* Botão confirmar presente (pill) */
+.btn-confirmar {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 24px auto 0 auto;
+  padding: 14px 0;
+  background: #d4af37;
+  color: #fff;
+  border: none;
+  border-radius: 32px !important;
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.08);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-confirmar:hover {
+  background: #bfa233;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.15);
+}
 /* Reset e configurações básicas */
 * {
     margin: 0;
@@ -753,16 +774,20 @@ body {
 }
 
 .btn-confirmar {
+    display: block;
     width: 100%;
+    max-width: 320px;
+    margin: 24px auto 0 auto;
+    padding: 14px 0;
     background: #d4af37;
     color: #fff;
-    padding: 15px;
     border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
+    border-radius: 32px !important;
+    font-size: 1.2rem;
     font-weight: 600;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.08);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.2s, box-shadow 0.2s;
 }
 
 .btn-confirmar:hover {
