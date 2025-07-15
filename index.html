@@ -423,6 +423,12 @@
         transition: background 0.2s;
         border-radius: 12px 12px 0 0;
       }
+      .accordion-item:last-child .accordion-header {
+        border-radius: 0 0 12px 12px;
+      }
+      .accordion-item:last-child .accordion-header[aria-expanded="true"] {
+        border-radius: 0 0 12px 12px;
+      }
       .accordion-header[aria-expanded="true"] {
         background: #fffbe6;
         color: #bfa233;
