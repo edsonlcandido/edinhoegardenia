@@ -17,18 +17,46 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <nav class="nav">
-            <div class="logo">E <span class="logo-amp">&</span> G</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="index.html#nossa-historia">Nossa História</a></li>
-                <li><a href="index.html#galeria">Galeria</a></li>
-                <li><a href="index.html#evento">Evento</a></li>
-                <li><a href="fotos.html" class="active">Fotos</a></li>
-            </ul>
-        </nav>
+      <nav class="nav">
+        <div class="logo">E <span class="logo-amp">&</span> G</div>
+        <button
+          class="menu-toggle"
+          aria-label="Abrir menu"
+          onclick="toggleMenu()"
+        >
+          <span class="menu-icon"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html#home">Início</a></li>
+          <li><a href="index.html#nossa-historia">Nossa História</a></li>
+          <li><a href="index.html#galeria">Galeria</a></li>
+          <li><a href="index.html#presentes">Presentes</a></li>
+          <li><a href="index.html#evento">Evento</a></li>
+          <li><a href="fotos.html">Fotos</a></li>
+          <li><a href="confirmacao.html">Confirmação</a></li>
+        </ul>
+      </nav>
     </header>
-
+    <script>
+      function toggleMenu() {
+        var navLinks = document.querySelector(".nav-links");
+        var menuToggle = document.querySelector(".menu-toggle");
+        navLinks.classList.toggle("open");
+        menuToggle.classList.toggle("open");
+      }
+      // Fecha o menu ao clicar em um link (mobile)
+      document.addEventListener("DOMContentLoaded", function () {
+        var links = document.querySelectorAll(".nav-links a");
+        var menuToggle = document.querySelector(".menu-toggle");
+        links.forEach(function (link) {
+          link.addEventListener("click", function () {
+            var navLinks = document.querySelector(".nav-links");
+            navLinks.classList.remove("open");
+            menuToggle.classList.remove("open");
+          });
+        });
+      });
+    </script>
     <!-- Hero Section with Full Width Photo -->
     <section class="fotos-hero">
         <div class="fotos-hero-image">
