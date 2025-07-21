@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos - Edinho & Gardenia</title>
+    <link rel="stylesheet" href="css/wedding-styles.css?v=202507091112">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">E <span class="logo-amp">&</span> G</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#nossa-historia">Nossa História</a></li>
+                <li><a href="index.html#galeria">Galeria</a></li>
+                <li><a href="index.html#evento">Evento</a></li>
+                <li><a href="fotos.html" class="active">Fotos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Full Width Photo -->
+    <section class="fotos-hero">
+        <div class="fotos-hero-image">
+            <img src="img/hero.jpg" alt="Edinho e Gardenia" class="full-width-photo">
+        </div>
+        <div class="fotos-hero-overlay"></div>
+        <div class="fotos-hero-content">
+            <h1 class="fotos-title">Compartilhe Seus Momentos</h1>
+            <p class="fotos-subtitle">Faça parte da nossa história enviando suas fotos especiais</p>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="upload-section">
+        <div class="container">
+            <div class="upload-buttons">
+                <button class="upload-btn camera-btn" id="cameraBtn">
+                    <svg class="btn-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                        <circle cx="12" cy="13" r="4"/>
+                    </svg>
+                    <span>Abrir Câmera</span>
+                </button>
+                
+                <button class="upload-btn upload-file-btn" id="uploadBtn">
+                    <svg class="btn-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="16"/>
+                        <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                    <span>Upload de Foto</span>
+                </button>
+            </div>
+            
+            <!-- Hidden file input -->
+            <input type="file" id="fileInput" accept="image/*" style="display: none;" multiple>
+            
+            <!-- Camera capture input -->
+            <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;">
+            
+            <!-- Preview area -->
+            <div class="preview-area" id="previewArea" style="display: none;">
+                <h3>Fotos Selecionadas</h3>
+                <div class="preview-grid" id="previewGrid"></div>
+                <div class="upload-actions">
+                    <button class="btn-secondary" id="clearBtn">Limpar</button>
+                    <button class="btn-primary" id="submitBtn">Enviar Fotos</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>2025 Edinho & Gardenia. Feito com ❤️ para nosso grande dia.</p>
+            <p><small>Produzido por <a href="https://www.ehtudo.app">Eh!Tudo.app</a></small></p>
+        </div>
+    </footer>
+
+    <script src="js/wedding-script.js?v=202507091112"></script>
+    <script src="js/fotos-upload.js?v=202507091112"></script>
+</body>
+
+</html>
