@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos - Edinho & Gardenia</title>
+    <link rel="stylesheet" href="css/wedding-styles.css?v=202507091112">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">E <span class="logo-amp">&</span> G</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Início</a></li>
+                <li><a href="index.html#nossa-historia">Nossa História</a></li>
+                <li><a href="index.html#galeria">Galeria</a></li>
+                <li><a href="index.html#evento">Evento</a></li>
+                <li><a href="fotos.html" class="active">Fotos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Fotos Section -->
+    <section id="fotos" class="fotos">
+        <div class="container">
+            <h2>Compartilhe Seus Momentos</h2>
+            <p class="fotos-subtitle">Faça upload de fotos ou tire novas fotos para compartilhar conosco!</p>
+            
+            <!-- Upload Options -->
+            <div class="upload-options">
+                <div class="upload-card">
+                    <h3>📱 Tirar Foto</h3>
+                    <p>Use a câmera do seu dispositivo</p>
+                    <button id="startCamera" class="btn-camera">Abrir Câmera</button>
+                </div>
+                
+                <div class="upload-card">
+                    <h3>📂 Fazer Upload</h3>
+                    <p>Selecione fotos do seu dispositivo</p>
+                    <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
+                    <button id="selectFiles" class="btn-upload">Escolher Fotos</button>
+                </div>
+            </div>
+
+            <!-- Camera Container -->
+            <div id="cameraContainer" class="camera-container" style="display: none;">
+                <div class="camera-wrapper">
+                    <video id="cameraVideo" autoplay muted playsinline></video>
+                    <canvas id="cameraCanvas" style="display: none;"></canvas>
+                    <div class="camera-controls">
+                        <button id="capturePhoto" class="btn-capture">📸 Capturar</button>
+                        <button id="stopCamera" class="btn-stop">❌ Fechar Câmera</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photos Preview -->
+            <div id="photosPreview" class="photos-preview">
+                <h3>Fotos Capturadas</h3>
+                <div id="photoGrid" class="photo-grid">
+                    <!-- Photos will be displayed here -->
+                </div>
+                <div class="preview-actions" style="display: none;">
+                    <button id="clearPhotos" class="btn-clear">🗑️ Limpar Todas</button>
+                    <button id="savePhotos" class="btn-save">💾 Salvar Fotos</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>2025 Edinho & Gardenia. Feito com ❤️ para nosso grande dia.</p>
+            <p><small>Produzido por <a href="https://www.ehtudo.app">Eh!Tudo.app</a></small></p>
+        </div>
+    </footer>
+
+    <script src="js/wedding-script.js?v=202507091112"></script>
+    <script src="js/photo-upload.js?v=202507091112"></script>
+</body>
+
+</html>
+</html>
