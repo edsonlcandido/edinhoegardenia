@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.disabled = true;
 
             try {
-                const res1 = await fetch('/api/collections/confirmacao/records', {
+                const res1 = await fetch(apiConfig.getBaseURL() + '/api/collections/confirmacao/records', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                 });
 
-                const res2 = await fetch('/api/collections/messages/records', {
+                const res2 = await fetch(apiConfig.getBaseURL() + '/api/collections/mensagens/records', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
