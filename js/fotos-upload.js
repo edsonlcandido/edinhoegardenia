@@ -144,13 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 updatePreview();
                 if (fileInput) fileInput.value = '';
                 if (cameraInput) cameraInput.value = '';
-                
-                // Refresh gallery to show new photos immediately
-                if (window.photoGallery) {
-                    setTimeout(() => {
-                        window.photoGallery.refresh();
-                    }, 1000); // Small delay to ensure upload is processed
-                }
             }
 
             submitBtn.textContent = originalText;
