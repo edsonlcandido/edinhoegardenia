@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fotos - Edinho & Gardenia</title>
   <link rel="stylesheet" href="css/wedding-styles.css?v=202507212359">
+  <link rel="stylesheet" href="css/gallery.css?v=202507212359">
   <script src="js/api-config.js"></script>
   <style>
     /* Menu responsivo com animação de slide */
@@ -292,35 +293,9 @@
   </footer>
 
   <script src="js/wedding-script.js?v=202507212359"></script>
+  <script src="js/gallery.js?v=202507212359"></script>
   <script src="js/fotos-upload.js?v=202507212359"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', async function () {
-      const galeriaGrid = document.getElementById('galeriaGrid');
-      galeriaGrid.innerHTML = '<p>Carregando fotos...</p>';
 
-      try {
-        const resp = await fetch(apiConfig.getBaseURL() + '/api/collections/fotos/records?page=1&perPage=30');
-        const data = await resp.json();
-
-        if (data.items && data.items.length > 0) {
-          galeriaGrid.innerHTML = '';
-          // Ordena decrescente pela data de criação
-          data.items.sort((a, b) => new Date(b.created) - new Date(a.created));
-          data.items.forEach(item => {
-            const imgUrl = apiConfig.getBaseURL() + `/api/files/${item.collectionId}/${item.id}/${item.foto}?thumb=300x300`;
-            const img = document.createElement('img');
-            img.src = imgUrl;
-            img.alt = 'Foto enviada';
-            galeriaGrid.appendChild(img);
-          });
-        } else {
-          galeriaGrid.innerHTML = '<p>Nenhuma foto enviada ainda.</p>';
-        }
-      } catch (err) {
-        galeriaGrid.innerHTML = '<p>Erro ao carregar fotos.</p>';
-      }
-    });
-  </script>
 </body>
 
 </html>
