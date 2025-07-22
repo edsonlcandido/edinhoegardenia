@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Submit photos
     if (submitBtn) {
-        submitBtn.addEventListener('click', function() {
+        submitBtn.addEventListener('click',async function() {
             if (selectedFiles.length === 0) {
                 showNotification('Selecione pelo menos uma foto para enviar.');
                 return;
@@ -115,19 +115,39 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Enviando...';
             submitBtn.disabled = true;
             
-            // Simulate network delay
-            setTimeout(() => {
-                showNotification(`${selectedFiles.length} foto(s) enviada(s) com sucesso! Obrigado por compartilhar seus momentos conosco! ❤️`);
-                
-                // Reset form
+                        // Envia cada foto individualmente para a coleção "fotos" do PocketBase
+            let sucesso = 0;
+            for (const file of selectedFiles) {
+                const formData = new FormData();
+                formData.append('foto', file); // "foto" é o nome do campo da coleção no PocketBase
+
+                try {
+                    const resp = await fetch(apiConfig.getBaseURL() + '/api/collections/fotos/records', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (resp.ok) {
+                        sucesso++;
+                    } else {
+                        const erro = await resp.json();
+                        showNotification('Erro ao enviar: ' + (erro?.message || 'Tente novamente.'));
+                    }
+                } catch (err) {
+                    showNotification('Falha de rede ao enviar foto.');
+                }
+            }
+
+            if (sucesso > 0) {
+                showNotification(`${sucesso} foto(s) enviada(s) com sucesso! Obrigado por compartilhar seus momentos conosco! ❤️`);
                 selectedFiles = [];
                 updatePreview();
                 if (fileInput) fileInput.value = '';
                 if (cameraInput) cameraInput.value = '';
-                
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
+            }
+
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
         });
     }
 });

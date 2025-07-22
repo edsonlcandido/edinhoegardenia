@@ -1620,7 +1620,7 @@ body {
 
 /* Upload Section */
 .upload-section {
-    padding: 4rem 0;
+    /* padding: 4rem 0; */
     background: #f8f9fa;
 }
 
@@ -1628,8 +1628,8 @@ body {
     display: flex;
     justify-content: center;
     gap: 3rem;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
+    /* margin-top: 2rem;
+    margin-bottom: 3rem; */
     flex-wrap: wrap;
 }
 
@@ -1819,3 +1819,4 @@ body {
         width: 100%;
         max-width: 250px;
     }
+}
