@@ -1,4 +1,4 @@
-/* Gallery Improvements: Lazy Loading, Pagination, and Lightbox */
+/* Gallery Improvements: Lazy Loading, Infinite Scroll, and Lightbox */
 
 /* Gallery Item Styling */
 .gallery-item {
@@ -32,51 +32,9 @@
   opacity: 1;
 }
 
-/* Pagination Styling */
-.pagination-container {
-  margin-top: 32px;
-  text-align: center;
-}
-
-.pagination-info {
-  margin-bottom: 16px;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.pagination-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.pagination-btn {
-  background: #d4af37;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: background 0.2s, opacity 0.2s;
-}
-
-.pagination-btn:hover:not(:disabled) {
-  background: #bfa233;
-}
-
-.pagination-btn:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.page-info {
-  font-weight: 500;
-  color: #333;
-  min-width: 120px;
+/* Infinite Scroll Sentinel */
+.scroll-sentinel {
+  visibility: hidden;
 }
 
 /* Loading and Error States */
@@ -180,18 +138,11 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-.lightbox-nav {
+.lightbox-prev,
+.lightbox-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-}
-
-.lightbox-prev,
-.lightbox-next {
   background: rgba(255, 255, 255, 0.2);
   border: none;
   color: white;
@@ -204,15 +155,15 @@
   align-items: center;
   justify-content: center;
   transition: background 0.2s;
-  pointer-events: auto;
+  z-index: 1001;
 }
 
 .lightbox-prev {
-  margin-left: -80px;
+  left: -80px;
 }
 
 .lightbox-next {
-  margin-right: -80px;
+  right: -80px;
 }
 
 .lightbox-prev:hover,
@@ -221,17 +172,7 @@
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
-  .pagination-controls {
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .pagination-btn {
-    padding: 10px 16px;
-    font-size: 0.8rem;
-  }
-  
+@media (max-width: 768px) {  
   .lightbox-content {
     max-width: 95vw;
     max-height: 95vh;
@@ -253,11 +194,11 @@
   }
   
   .lightbox-prev {
-    margin-left: -60px;
+    left: -60px;
   }
   
   .lightbox-next {
-    margin-right: -60px;
+    right: -60px;
   }
 }
 

@@ -1,5 +1,5 @@
 /**
- * Photo Gallery with Lazy Loading, Pagination, and Lightbox
+ * Photo Gallery with Lazy Loading, Infinite Scroll, and Lightbox
  */
 class PhotoGallery {
     constructor() {
@@ -9,9 +9,9 @@ class PhotoGallery {
         this.totalItems = 0;
         this.photos = [];
         this.isLoading = false;
+        this.hasMorePhotos = true;
         
         this.galeriaGrid = document.getElementById('galeriaGrid');
-        this.paginationContainer = this.createPaginationContainer();
         this.lightbox = this.createLightbox();
         
         this.init();
@@ -20,31 +20,34 @@ class PhotoGallery {
     init() {
         this.loadPhotos();
         this.setupIntersectionObserver();
+        this.setupInfiniteScroll();
         this.setupLightboxEvents();
     }
     
-    createPaginationContainer() {
-        const container = document.createElement('div');
-        container.className = 'pagination-container';
-        container.innerHTML = `
-            <div class="pagination-info">
-                <span id="paginationInfo">Carregando...</span>
-            </div>
-            <div class="pagination-controls">
-                <button id="prevPage" class="pagination-btn" disabled>← Anterior</button>
-                <span id="pageInfo" class="page-info">Página 1 de 1</span>
-                <button id="nextPage" class="pagination-btn" disabled>Próxima →</button>
-            </div>
-        `;
+    setupInfiniteScroll() {
+        // Create a sentinel element to trigger loading more photos
+        this.sentinel = document.createElement('div');
+        this.sentinel.className = 'scroll-sentinel';
+        this.sentinel.style.height = '20px';
+        this.sentinel.style.margin = '20px 0';
         
-        // Insert after the gallery grid
-        this.galeriaGrid.parentNode.insertBefore(container, this.galeriaGrid.nextSibling);
+        // Insert sentinel after the gallery grid
+        this.galeriaGrid.parentNode.insertBefore(this.sentinel, this.galeriaGrid.nextSibling);
         
-        // Setup pagination event listeners
-        document.getElementById('prevPage').addEventListener('click', () => this.goToPreviousPage());
-        document.getElementById('nextPage').addEventListener('click', () => this.goToNextPage());
+        // Observe sentinel for infinite scroll
+        this.scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && this.hasMorePhotos && !this.isLoading) {
+                    this.loadMorePhotos();
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '100px',
+            threshold: 0.1
+        });
         
-        return container;
+        this.scrollObserver.observe(this.sentinel);
     }
     
     createLightbox() {
@@ -55,10 +58,8 @@ class PhotoGallery {
                 <div class="lightbox-content">
                     <button class="lightbox-close">&times;</button>
                     <img class="lightbox-image" src="" alt="Foto">
-                    <div class="lightbox-nav">
-                        <button class="lightbox-prev">‹</button>
-                        <button class="lightbox-next">›</button>
-                    </div>
+                    <button class="lightbox-prev">‹</button>
+                    <button class="lightbox-next">›</button>
                 </div>
             </div>
         `;
@@ -120,11 +121,14 @@ class PhotoGallery {
         });
     }
     
-    async loadPhotos(page = 1) {
+    async loadPhotos(page = 1, append = false) {
         if (this.isLoading) return;
         
         this.isLoading = true;
-        this.showLoading();
+        
+        if (!append) {
+            this.showLoading();
+        }
         
         try {
             const response = await fetch(
@@ -141,10 +145,19 @@ class PhotoGallery {
             this.perPage = data.perPage || 30;
             this.totalPages = data.totalPages || 1;
             this.totalItems = data.totalItems || 0;
-            this.photos = data.items || [];
             
-            this.renderPhotos();
-            this.updatePagination();
+            // Check if there are more photos to load
+            this.hasMorePhotos = this.currentPage < this.totalPages;
+            
+            if (append) {
+                // Append new photos to existing ones
+                this.photos = [...this.photos, ...(data.items || [])];
+            } else {
+                // Replace photos (initial load or refresh)
+                this.photos = data.items || [];
+            }
+            
+            this.renderPhotos(append);
             
         } catch (error) {
             console.error('Erro ao carregar fotos:', error);
@@ -154,15 +167,29 @@ class PhotoGallery {
         }
     }
     
-    renderPhotos() {
+    async loadMorePhotos() {
+        if (!this.hasMorePhotos || this.isLoading) return;
+        
+        const nextPage = this.currentPage + 1;
+        await this.loadPhotos(nextPage, true);
+    }
+    
+    renderPhotos(append = false) {
         if (this.photos.length === 0) {
             this.galeriaGrid.innerHTML = '<p class="no-photos">Nenhuma foto enviada ainda.</p>';
             return;
         }
         
-        this.galeriaGrid.innerHTML = '';
+        if (!append) {
+            this.galeriaGrid.innerHTML = '';
+        }
         
         this.photos.forEach((photo, index) => {
+            // Skip already rendered photos when appending
+            if (append && index < this.galeriaGrid.children.length) {
+                return;
+            }
+            
             const imgContainer = document.createElement('div');
             imgContainer.className = 'gallery-item';
             
@@ -191,41 +218,6 @@ class PhotoGallery {
             // Observe for lazy loading
             this.imageObserver.observe(img);
         });
-    }
-    
-    updatePagination() {
-        const infoElement = document.getElementById('paginationInfo');
-        const pageInfoElement = document.getElementById('pageInfo');
-        const prevBtn = document.getElementById('prevPage');
-        const nextBtn = document.getElementById('nextPage');
-        
-        // Update info text
-        if (this.totalItems > 0) {
-            const startItem = (this.currentPage - 1) * this.perPage + 1;
-            const endItem = Math.min(this.currentPage * this.perPage, this.totalItems);
-            infoElement.textContent = `Mostrando ${startItem}-${endItem} de ${this.totalItems} fotos`;
-        } else {
-            infoElement.textContent = 'Nenhuma foto encontrada';
-        }
-        
-        // Update page info
-        pageInfoElement.textContent = `Página ${this.currentPage} de ${this.totalPages}`;
-        
-        // Update button states
-        prevBtn.disabled = this.currentPage <= 1;
-        nextBtn.disabled = this.currentPage >= this.totalPages;
-    }
-    
-    goToPreviousPage() {
-        if (this.currentPage > 1) {
-            this.loadPhotos(this.currentPage - 1);
-        }
-    }
-    
-    goToNextPage() {
-        if (this.currentPage < this.totalPages) {
-            this.loadPhotos(this.currentPage + 1);
-        }
     }
     
     openLightbox(index) {
@@ -290,7 +282,11 @@ class PhotoGallery {
     
     // Public method to refresh gallery (called after upload)
     refresh() {
-        this.loadPhotos(this.currentPage);
+        // Reset for fresh load
+        this.currentPage = 1;
+        this.photos = [];
+        this.hasMorePhotos = true;
+        this.loadPhotos(1, false);
     }
 }
 
