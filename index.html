@@ -1,385 +1,398 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edinho & Gardenia - Nosso Casamento</title>
-    <link rel="stylesheet" href="css/wedding-styles.css?v=202507212359" />
-    <style>
-      /* Menu responsivo com animação de slide */
-      .menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        margin-left: auto;
-        z-index: 101;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edinho & Gardenia - Nosso Casamento</title>
+  <link rel="stylesheet" href="css/wedding-styles.css?v=202507212359" />
+  <style>
+    /* Menu responsivo com animação de slide */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      margin-left: auto;
+      z-index: 101;
+    }
+
+    .menu-icon {
+      width: 28px;
+      height: 3px;
+      background: #d4af37;
+      display: block;
+      position: relative;
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+
+    .menu-icon::before,
+    .menu-icon::after {
+      content: "";
+      width: 28px;
+      height: 3px;
+      background: #d4af37;
+      position: absolute;
+      left: 0;
+      border-radius: 2px;
+      transition: top 0.3s, transform 0.3s, background 0.3s;
+    }
+
+    .menu-icon::before {
+      top: -8px;
+    }
+
+    .menu-icon::after {
+      top: 8px;
+    }
+
+    .menu-toggle.open .menu-icon {
+      background: transparent;
+    }
+
+    .menu-toggle.open .menu-icon::before {
+      top: 0;
+      transform: rotate(45deg);
+      background: #d4af37;
+    }
+
+    .menu-toggle.open .menu-icon::after {
+      top: 0;
+      transform: rotate(-45deg);
+      background: #d4af37;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 100vw;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: -2px 0 12px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        transform: translateX(100vw);
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        display: flex;
+        z-index: 100;
       }
-      .menu-icon {
-        width: 28px;
-        height: 3px;
-        background: #d4af37;
+
+      .nav-links.open {
+        transform: translateX(0);
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: right;
+        padding-right: 32px;
+      }
+
+      .nav-links a {
+        font-size: 1.5rem;
+        color: #d4af37;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 18px 0;
         display: block;
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .nav-links a:hover {
+        background: #f7f7f7;
+        color: #bfa233;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav {
         position: relative;
-        border-radius: 2px;
-        transition: background 0.3s;
+        display: flex;
+        align-items: center;
       }
-      .menu-icon::before,
-      .menu-icon::after {
-        content: "";
-        width: 28px;
-        height: 3px;
-        background: #d4af37;
-        position: absolute;
-        left: 0;
-        border-radius: 2px;
-        transition: top 0.3s, transform 0.3s, background 0.3s;
-      }
-      .menu-icon::before {
-        top: -8px;
-      }
-      .menu-icon::after {
-        top: 8px;
-      }
-      .menu-toggle.open .menu-icon {
-        background: transparent;
-      }
-      .menu-toggle.open .menu-icon::before {
-        top: 0;
-        transform: rotate(45deg);
-        background: #d4af37;
-      }
-      .menu-toggle.open .menu-icon::after {
-        top: 0;
-        transform: rotate(-45deg);
-        background: #d4af37;
-      }
-      @media (max-width: 900px) {
-        .nav-links {
-          position: fixed;
-          top: 0;
-          right: 0;
-          height: 100vh;
-          width: 100vw;
-          background: rgba(255, 255, 255, 0.98);
-          box-shadow: -2px 0 12px rgba(0, 0, 0, 0.1);
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 32px;
-          padding: 0;
-          margin: 0;
-          list-style: none;
-          transform: translateX(100vw);
-          transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-          display: flex;
-          z-index: 100;
-        }
-        .nav-links.open {
-          transform: translateX(0);
-        }
-        .nav-links li {
-          width: 100%;
-          text-align: right;
-          padding-right: 32px;
-        }
-        .nav-links a {
-          font-size: 1.5rem;
-          color: #d4af37;
-          font-weight: 600;
-          text-decoration: none;
-          padding: 18px 0;
-          display: block;
-          transition: background 0.2s, color 0.2s;
-        }
-        .nav-links a:hover {
-          background: #f7f7f7;
-          color: #bfa233;
-        }
-        .menu-toggle {
-          display: block;
-        }
-        .nav {
-          position: relative;
-          display: flex;
-          align-items: center;
-        }
-      }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="header">
-      <nav class="nav">
-        <div class="logo">E <span class="logo-amp">&</span> G</div>
-        <button
-          class="menu-toggle"
-          aria-label="Abrir menu"
-          onclick="toggleMenu()"
-        >
-          <span class="menu-icon"></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="#home">Início</a></li>
-          <li><a href="#nossa-historia">Nossa História</a></li>
-          <li><a href="#padrinhos">Padrinhos</a></li>
-          <li><a href="#galeria">Galeria</a></li>
-          <!--<li><a href="#presentes">Presentes</a></li> -->
-          <li><a href="#evento">Local</a></li>
-          <!--<li><a href="fotos.html">Fotos</a></li>
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <div class="logo">E <span class="logo-amp">&</span> G</div>
+      <button class="menu-toggle" aria-label="Abrir menu" onclick="toggleMenu()">
+        <span class="menu-icon"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#nossa-historia">Nossa História</a></li>
+        <li><a href="#padrinhos">Padrinhos</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <!--<li><a href="#presentes">Presentes</a></li> -->
+        <li><a href="#evento">Local</a></li>
+        <!--<li><a href="fotos.html">Fotos</a></li>
           <li><a href="confirmacao.html">Confirmação</a></li>-->
-        </ul>
-      </nav>
-    </header>
-    <script>
-      function toggleMenu() {
-        var navLinks = document.querySelector(".nav-links");
-        var menuToggle = document.querySelector(".menu-toggle");
-        navLinks.classList.toggle("open");
-        menuToggle.classList.toggle("open");
-      }
-      // Fecha o menu ao clicar em um link (mobile)
-      document.addEventListener("DOMContentLoaded", function () {
-        var links = document.querySelectorAll(".nav-links a");
-        var menuToggle = document.querySelector(".menu-toggle");
-        links.forEach(function (link) {
-          link.addEventListener("click", function () {
-            var navLinks = document.querySelector(".nav-links");
-            navLinks.classList.remove("open");
-            menuToggle.classList.remove("open");
-          });
+      </ul>
+    </nav>
+  </header>
+  <script>
+    function toggleMenu() {
+      var navLinks = document.querySelector(".nav-links");
+      var menuToggle = document.querySelector(".menu-toggle");
+      navLinks.classList.toggle("open");
+      menuToggle.classList.toggle("open");
+    }
+    // Fecha o menu ao clicar em um link (mobile)
+    document.addEventListener("DOMContentLoaded", function () {
+      var links = document.querySelectorAll(".nav-links a");
+      var menuToggle = document.querySelector(".menu-toggle");
+      links.forEach(function (link) {
+        link.addEventListener("click", function () {
+          var navLinks = document.querySelector(".nav-links");
+          navLinks.classList.remove("open");
+          menuToggle.classList.remove("open");
         });
       });
-    </script>
+    });
+  </script>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <div class="hero-image">
-          <img
-            src="img/hero.jpg"
-            alt="Edinho e Gardenia"
-            class="couple-photo"
-          />
-        </div>
-        <div class="hero-text">
-          <h1 class="couple-names">
-            Edinho <span class="couple-names-amp">&</span> Gardenia
-          </h1>
-          <p class="wedding-date">07 de Fevereiro de 2026</p>
-          <p class="tagline">Celebrando nosso amor eterno</p>
-          <div class="countdown" id="countdown">
-            <div class="countdown-item">
-              <span id="days">00</span>
-              <label>Dias</label>
-            </div>
-            <div class="countdown-item">
-              <span id="hours">00</span>
-              <label>Horas</label>
-            </div>
-            <div class="countdown-item">
-              <span id="minutes">00</span>
-              <label>Min</label>
-            </div>
-            <div class="countdown-item">
-              <span id="seconds">00</span>
-              <label>Seg</label>
-            </div>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-image">
+        <img src="img/hero.jpg" alt="Edinho e Gardenia" class="couple-photo" />
+      </div>
+      <div class="hero-text">
+        <h1 class="couple-names">
+          Edinho <span class="couple-names-amp">&</span> Gardenia
+        </h1>
+        <p class="wedding-date">07 de Fevereiro de 2026</p>
+        <p class="tagline">Celebrando nosso amor eterno</p>
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <span id="days">00</span>
+            <label>Dias</label>
+          </div>
+          <div class="countdown-item">
+            <span id="hours">00</span>
+            <label>Horas</label>
+          </div>
+          <div class="countdown-item">
+            <span id="minutes">00</span>
+            <label>Min</label>
+          </div>
+          <div class="countdown-item">
+            <span id="seconds">00</span>
+            <label>Seg</label>
           </div>
         </div>
       </div>
-      <div class="hero-overlay"></div>
-    </section>
+    </div>
+    <div class="hero-overlay"></div>
+  </section>
 
-    <!-- Nossa História -->
-    <section id="nossa-historia" class="nossa-historia">
-      <div class="container">
-        <h2>Nossa História</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-date">2020</div>
-            <div class="timeline-content">
-              <h3>Primeiro Encontro</h3>
-              <p>
-                Parece que o destino tinha planos especiais para nós! Graças às
-                nossas incríveis madrinhas, Ana Paula e Nídia, nossos caminhos
-                finalmente se cruzaram em um encontro que marcou o início de
-                tudo. Uma conexão instantânea que já prometia muitas alegrias!
-              </p>
-            </div>
+  <!-- Nossa História -->
+  <section id="nossa-historia" class="nossa-historia">
+    <div class="container">
+      <h2>Nossa História</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2020</div>
+          <div class="timeline-content">
+            <h3>Primeiro Encontro</h3>
+            <p>
+              Parece que o destino tinha planos especiais para nós! Graças às
+              nossas incríveis madrinhas, Ana Paula e Nídia, nossos caminhos
+              finalmente se cruzaram em um encontro que marcou o início de
+              tudo. Uma conexão instantânea que já prometia muitas alegrias!
+            </p>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2021</div>
-            <div class="timeline-content">
-              <h3>O Reencontro</h3>
-              <p>
-                O que é para ser, encontra um jeito. Nossos corações se
-                reencontraram, e foi como se nunca tivéssemos nos separado. A
-                partir daqui, cada dia era uma nova aventura, e logo percebemos
-                que juntos, somos a melhor versão de nós mesmos. As risadas e
-                descobertas não pararam mais!
-              </p>
-            </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2021</div>
+          <div class="timeline-content">
+            <h3>O Reencontro</h3>
+            <p>
+              O que é para ser, encontra um jeito. Nossos corações se
+              reencontraram, e foi como se nunca tivéssemos nos separado. A
+              partir daqui, cada dia era uma nova aventura, e logo percebemos
+              que juntos, somos a melhor versão de nós mesmos. As risadas e
+              descobertas não pararam mais!
+            </p>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2022</div>
-            <div class="timeline-content">
-              <h3>Companheiros de Aventuras para a Vida!</h3>
-              <p>
-                Não dava mais para ficar um longe do outro. Foi então que, com o
-                coração cheio de alegria, oficializamos o nosso compromisso:
-                seríamos para sempre companheiros de aventuras, enfrentando cada
-                desafio e celebrando cada conquista lado a lado.
-              </p>
-            </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2022</div>
+          <div class="timeline-content">
+            <h3>Companheiros de Aventuras para a Vida!</h3>
+            <p>
+              Não dava mais para ficar um longe do outro. Foi então que, com o
+              coração cheio de alegria, oficializamos o nosso compromisso:
+              seríamos para sempre companheiros de aventuras, enfrentando cada
+              desafio e celebrando cada conquista lado a lado.
+            </p>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2023 e 2024</div>
-            <div class="timeline-content">
-              <h3>Expandindo Nossos Horizontes Juntos</h3>
-              <p>
-                Esses foram anos de pura exploração! Continuamos nossa jornada,
-                conhecendo lugares incríveis, vivendo experiências inesquecíveis
-                e, o mais importante, nos descobrindo ainda mais um no outro.
-                Cada viagem, cada momento, fortaleceu ainda mais nossa união e
-                nosso amor.
-              </p>
-            </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2023 e 2024</div>
+          <div class="timeline-content">
+            <h3>Expandindo Nossos Horizontes Juntos</h3>
+            <p>
+              Esses foram anos de pura exploração! Continuamos nossa jornada,
+              conhecendo lugares incríveis, vivendo experiências inesquecíveis
+              e, o mais importante, nos descobrindo ainda mais um no outro.
+              Cada viagem, cada momento, fortaleceu ainda mais nossa união e
+              nosso amor.
+            </p>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2025</div>
-            <div class="timeline-content">
-              <h3>O "Sim" Mais Esperado!</h3>
-              <p>
-                E então, o momento mágico chegou! Este ano foi coroado com o
-                "sim" mais lindo e emocionante, a confirmação do nosso amor
-                eterno. Uma promessa de que seremos sempre o porto seguro e a
-                alegria um do outro, para todo o sempre.
-              </p>
-            </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2025</div>
+          <div class="timeline-content">
+            <h3>O "Sim" Mais Esperado!</h3>
+            <p>
+              E então, o momento mágico chegou! Este ano foi coroado com o
+              "sim" mais lindo e emocionante, a confirmação do nosso amor
+              eterno. Uma promessa de que seremos sempre o porto seguro e a
+              alegria um do outro, para todo o sempre.
+            </p>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2026</div>
-            <div class="timeline-content">
-              <h3>Nossa União Abençoada por Deus</h3>
-              <p>
-                O próximo passo é ainda mais especial: entregar nossa união nas
-                mãos de Deus. Teremos a benção divina sobre o nosso amor,
-                sabendo que com Ele, tudo se torna mais forte, mais puro e mais
-                completo. Que nossa fé continue nos guiando em cada novo
-                capítulo!
-              </p>
-            </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-content">
+            <h3>Nossa União Abençoada por Deus</h3>
+            <p>
+              O próximo passo é ainda mais especial: entregar nossa união nas
+              mãos de Deus. Teremos a benção divina sobre o nosso amor,
+              sabendo que com Ele, tudo se torna mais forte, mais puro e mais
+              completo. Que nossa fé continue nos guiando em cada novo
+              capítulo!
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Padrinhos -->
-    <section id="padrinhos" class="padrinhos">
-      <div class="container">
-        <h2>Nossos Padrinhos</h2>
-        <p class="padrinhos-subtitle">
-"O Senhor tem feito coisas grandiosas por nós, e por isso estamos alegres."<br/>- Salmo 126:3
-</p>
-<p class="padrinhos-subtitle">Nossa alegria é ainda maior porque vocês fazem parte desse momento abençoado.</p>
+  <!-- Padrinhos -->
+  <section id="padrinhos" class="padrinhos">
+    <div class="container">
+      <h2>Nossos Padrinhos</h2>
+      <p class="padrinhos-subtitle">
+        "O Senhor tem feito coisas grandiosas por nós, e por isso estamos alegres."<br />- Salmo 126:3
+      </p>
+      <p class="padrinhos-subtitle">Nossa alegria é ainda maior porque vocês fazem parte desse momento abençoado.</p>
 
-        <div class="padrinhos-grid" id="padrinhosGrid">
-          <!-- Placeholder para fotos dos padrinhos -->
-          <div class="padrinho-card">
-            <div class="padrinho-photo">
-              <img src="img/ana-paula.jpeg" alt="Madrinha" />
-            </div>
-            <div class="padrinho-info">
-              <h3>Ana Paula</h3>
-              <p></p>
-            </div>
+      <div class="padrinhos-grid" id="padrinhosGrid">
+        <!-- Placeholder para fotos dos padrinhos -->
+        <div class="padrinho-card">
+          <div class="padrinho-photo">
+            <img src="img/ana-paula.jpeg" alt="Madrinha" />
           </div>
-          
-          <div class="padrinho-card">
-            <div class="padrinho-photo">
-              <img src="img/nidia-e-douglas.jpeg" alt="Padrinho/Madrinha" />
-            </div>
-            <div class="padrinho-info">
-              <h3>Nídia e Douglas</h3>
-              <p></p>
-            </div>
+          <div class="padrinho-info">
+            <h3>Ana Paula</h3>
+            <p></p>
           </div>
+        </div>
+
+        <div class="padrinho-card">
+          <div class="padrinho-photo">
+            <img src="img/nidia-e-douglas.jpeg" alt="Padrinho/Madrinha" />
+          </div>
+          <div class="padrinho-info">
+            <h3>Nídia e Douglas</h3>
+            <p></p>
+          </div>
+        </div>
 
 
-          <div class="padrinho-card">
-            <div class="padrinho-photo">
-              <img src="img/monica-negretti.jpeg" alt="Padrinho/Madrinha" />
-            </div>
-            <div class="padrinho-info">
-              <h3>Mônica e Negretti</h3>
-              <p></p>
-            </div>
+        <div class="padrinho-card">
+          <div class="padrinho-photo">
+            <img src="img/monica-negretti.jpeg" alt="Padrinho/Madrinha" />
           </div>
+          <div class="padrinho-info">
+            <h3>Mônica e Negretti</h3>
+            <p></p>
+          </div>
+        </div>
 
-          <div class="padrinho-card">
-            <div class="padrinho-photo">
-              <img src="img/dayse-roberto.jpeg" alt="Madrinha/Padrinho" />
-            </div>
-            <div class="padrinho-info">
-              <h3>Dayse e Roberto</h3>
-              <p></p>
-            </div>
+        <div class="padrinho-card">
+          <div class="padrinho-photo">
+            <img src="img/dayse-roberto.jpeg" alt="Madrinha/Padrinho" />
           </div>
-          
-          
-          <div class="padrinho-card">
-            <div class="padrinho-photo">
-              <img src="img/anderson.jpeg" alt="Padrinho" />
-            </div>
-            <div class="padrinho-info">
-              <h3>Anderson</h3>
-              <p></p>
-            </div>
+          <div class="padrinho-info">
+            <h3>Dayse e Roberto</h3>
+            <p></p>
           </div>
-
-          <div class="padrinho-card">
-            <div class="padrinho-photo">
-              <img src="img/jessica-e-jackson.jpeg" alt="Padrinho/Madrinha" />
-            </div>
-            <div class="padrinho-info">
-              <h3>Jessica e Jackson</h3>
-              <p></p>
-            </div>
-          </div>
+        </div>
 
 
-          <div class="padrinho-card">
-            <div class="padrinho-photo">
-              <img src="img/ray.jpeg" alt="Madrinha" />
-            </div>
-            <div class="padrinho-info">
-              <h3>Ray</h3>
-              <p></p>
-            </div>
+        <div class="padrinho-card">
+          <div class="padrinho-photo">
+            <img src="img/anderson.jpeg" alt="Padrinho" />
           </div>
+          <div class="padrinho-info">
+            <h3>Anderson</h3>
+            <p></p>
+          </div>
+        </div>
 
-          <div class="padrinho-card">
-            <div class="padrinho-photo">
-              <img src="img/ana-luiza.jpeg" alt="Madrinha" />
-            </div>
-            <div class="padrinho-info">
-              <h3>Ana Luiza</h3>
-              <p></p>
-            </div>
+        <div class="padrinho-card">
+          <div class="padrinho-photo">
+            <img src="img/ray.jpeg" alt="Madrinha" />
           </div>
-          <!--
+          <div class="padrinho-info">
+            <h3>Ray</h3>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="padrinho-card">
+          <div class="padrinho-photo">
+            <img src="img/jessica-e-jackson.jpeg" alt="Padrinho/Madrinha" />
+          </div>
+          <div class="padrinho-info">
+            <h3>Jessica e Jackson</h3>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="padrinho-card">
+          <div class="padrinho-photo">
+            <img src="img/ana-luiza.jpeg" alt="Madrinha" />
+          </div>
+          <div class="padrinho-info">
+            <h3>Ana Luiza</h3>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="padrinho-card">
+          <div class="padrinho-photo">
+            <img src="img/kelly-e-marcelo.jpeg" alt="Padrinho/Madrinha" />
+          </div>
+          <div class="padrinho-info">
+            <h3>Kelly e Marcelo</h3>
+            <p></p>
+          </div>
+        </div>
+        <!--
           <div class="padrinho-card">
             <div class="padrinho-photo">
               <img src="img/hero.jpg" alt="Padrinho/Madrinha" />
@@ -390,24 +403,24 @@
             </div>
           </div>
           -->
-        </div>
       </div>
-    </section>
-    
-    <!-- Galeria de Fotos -->
-    <section id="galeria" class="galeria">
-      <div class="container">
-        <h2>Nossos Momentos</h2>
-        <p class="galeria-subtitle">
-          Uma coleção dos nossos melhores momentos juntos
-        </p>
+    </div>
+  </section>
 
-        <div class="foto-grid" id="fotoGrid">
-          <!-- As fotos serão carregadas dinamicamente via JavaScript -->
-        </div>
+  <!-- Galeria de Fotos -->
+  <section id="galeria" class="galeria">
+    <div class="container">
+      <h2>Nossos Momentos</h2>
+      <p class="galeria-subtitle">
+        Uma coleção dos nossos melhores momentos juntos
+      </p>
+
+      <div class="foto-grid" id="fotoGrid">
+        <!-- As fotos serão carregadas dinamicamente via JavaScript -->
       </div>
-    </section>
-    <!-- Presentes
+    </div>
+  </section>
+  <!-- Presentes
     <section id="presentes" class="presentes">
       <div class="container">
         <h2>Lista de Presentes da Lua de Mel</h2>
@@ -558,45 +571,42 @@
         }
       }
     </style> -->
-    <script>
-      // Acordeão para modal de presente
-      document.addEventListener('DOMContentLoaded', function () {
-        const headers = document.querySelectorAll('.accordion-header');
-        headers.forEach(header => {
-          header.addEventListener('click', function () {
-            const expanded = this.getAttribute('aria-expanded') === 'true';
-            headers.forEach(h => {
-              h.setAttribute('aria-expanded', 'false');
-              h.nextElementSibling.style.display = 'none';
-            });
-            if (!expanded) {
-              this.setAttribute('aria-expanded', 'true');
-              this.nextElementSibling.style.display = 'block';
-            }
+  <script>
+    // Acordeão para modal de presente
+    document.addEventListener('DOMContentLoaded', function () {
+      const headers = document.querySelectorAll('.accordion-header');
+      headers.forEach(header => {
+        header.addEventListener('click', function () {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          headers.forEach(h => {
+            h.setAttribute('aria-expanded', 'false');
+            h.nextElementSibling.style.display = 'none';
           });
+          if (!expanded) {
+            this.setAttribute('aria-expanded', 'true');
+            this.nextElementSibling.style.display = 'block';
+          }
         });
       });
-    </script>
+    });
+  </script>
 
-    <!-- Evento -->
-    <section id="evento" class="evento">
-      <div class="container">
-        <h2>Detalhes do Evento</h2>
-        <div class="evento-details">
-          <div class="evento-card">
-            <h3>Cerimônia & Recepção</h3>
-            <p><strong>Data:</strong> 07 de Fevereiro de 2026</p>
-            <p><strong>Horário:</strong> 11:00</p>
-            <p><strong>Local:</strong> Panvino</p>
-            <p>
-              <strong>Endereço:</strong> Rua Roque Petrella, 235 - Brooklin, São
-              Paulo - SP, 04581-050
-            </p>
-            <a
-              href="https://maps.google.com/?q=Rua+Roque+Petrella,+235+-+Brooklin,+São+Paulo+-+SP,+04581-050"
-              class="map-link"
-              target="_blank"
-              style="
+  <!-- Evento -->
+  <section id="evento" class="evento">
+    <div class="container">
+      <h2>Detalhes do Evento</h2>
+      <div class="evento-details">
+        <div class="evento-card">
+          <h3>Cerimônia & Recepção</h3>
+          <p><strong>Data:</strong> 07 de Fevereiro de 2026</p>
+          <p><strong>Horário:</strong> 11:00</p>
+          <p><strong>Local:</strong> Panvino</p>
+          <p>
+            <strong>Endereço:</strong> Rua Roque Petrella, 235 - Brooklin, São
+            Paulo - SP, 04581-050
+          </p>
+          <a href="https://maps.google.com/?q=Rua+Roque+Petrella,+235+-+Brooklin,+São+Paulo+-+SP,+04581-050"
+            class="map-link" target="_blank" style="
                 display: inline-flex;
                 align-items: center;
                 gap: 8px;
@@ -607,160 +617,105 @@
                 text-decoration: none;
                 font-weight: 600;
                 transition: background 0.3s;
-              "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
-                />
-              </svg>
-              Ver no Mapa
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Modal Instagram -->
-    <div class="instagram-modal" id="instagramModal">
-      <div class="modal-backdrop" onclick="closeModal()"></div>
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="profile-info">
-            <div class="profile-avatar">
-              <img src="img/hero.jpg" alt="Perfil" />
-            </div>
-            <div class="profile-details">
-              <h4>edinhoegardenia</h4>
-              <p id="photo-location">São Paulo, Brasil</p>
-            </div>
-          </div>
-          <button class="close-btn" onclick="closeModal()">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M18 6L6 18" />
-              <path d="M6 6l12 12" />
+              ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
             </svg>
-          </button>
-        </div>
-
-        <div class="modal-image-container">
-          <img id="modalImage" src="" alt="Foto do casal" />
-          <div class="modal-navigation">
-            <button class="nav-btn prev-btn" onclick="previousPhoto()">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="m15 18-6-6 6-6" />
-              </svg>
-            </button>
-            <button class="nav-btn next-btn" onclick="nextPhoto()">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="modal-content-area">
-          <div class="likes-section">
-            <div class="action-buttons">
-              <button class="action-btn like-btn" onclick="toggleLike()">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-                  />
-                </svg>
-              </button>
-              <button class="action-btn comment-btn">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-                  />
-                </svg>
-              </button>
-              <button class="action-btn share-btn">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
-                  <polyline points="16,6 12,2 8,6" />
-                  <line x1="12" y1="2" x2="12" y2="15" />
-                </svg>
-              </button>
-            </div>
-            <p class="likes-count" id="likesCount">157 curtidas</p>
-          </div>
-
-          <div class="caption-section">
-            <div class="caption-content">
-              <strong>edinhoegardenia</strong>
-              <span id="modalCaption">Nosso amor é eterno ❤️</span>
-            </div>
-            <p class="post-date" id="modalDate">2 dias atrás</p>
-          </div>
+            Ver no Mapa
+          </a>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <p>Edinho & Gardenia. Feito com ❤️ para nosso grande dia.</p>
-        <p>
-          <small
-            >Produzido por
-            <a href="https://www.ehtudo.app">Eh!Tudo.app</a></small
-          >
-        </p>
+  <!-- Modal Instagram -->
+  <div class="instagram-modal" id="instagramModal">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="profile-info">
+          <div class="profile-avatar">
+            <img src="img/hero.jpg" alt="Perfil" />
+          </div>
+          <div class="profile-details">
+            <h4>edinhoegardenia</h4>
+            <p id="photo-location">São Paulo, Brasil</p>
+          </div>
+        </div>
+        <button class="close-btn" onclick="closeModal()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18" />
+            <path d="M6 6l12 12" />
+          </svg>
+        </button>
       </div>
-    </footer>
-    <script src="js/countdown.js?v=202507212359"></script>
-    <script src="js/wedding-script.js?v=202507212359"></script>
-    <script src="js/gifts.js?v=202507212359"></script>
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-  </body>
+
+      <div class="modal-image-container">
+        <img id="modalImage" src="" alt="Foto do casal" />
+        <div class="modal-navigation">
+          <button class="nav-btn prev-btn" onclick="previousPhoto()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+          <button class="nav-btn next-btn" onclick="nextPhoto()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-content-area">
+        <div class="likes-section">
+          <div class="action-buttons">
+            <button class="action-btn like-btn" onclick="toggleLike()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+            </button>
+            <button class="action-btn comment-btn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+            </button>
+            <button class="action-btn share-btn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                <polyline points="16,6 12,2 8,6" />
+                <line x1="12" y1="2" x2="12" y2="15" />
+              </svg>
+            </button>
+          </div>
+          <p class="likes-count" id="likesCount">157 curtidas</p>
+        </div>
+
+        <div class="caption-section">
+          <div class="caption-content">
+            <strong>edinhoegardenia</strong>
+            <span id="modalCaption">Nosso amor é eterno ❤️</span>
+          </div>
+          <p class="post-date" id="modalDate">2 dias atrás</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Edinho & Gardenia. Feito com ❤️ para nosso grande dia.</p>
+      <p>
+        <small>Produzido por
+          <a href="https://www.ehtudo.app">Eh!Tudo.app</a></small>
+      </p>
+    </div>
+  </footer>
+  <script src="js/countdown.js?v=202507212359"></script>
+  <script src="js/wedding-script.js?v=202507212359"></script>
+  <script src="js/gifts.js?v=202507212359"></script>
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+</body>
+
 </html>
