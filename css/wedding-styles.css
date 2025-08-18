@@ -1956,3 +1956,102 @@ body {
         max-width: 250px;
     }
 }
+
+/* Padrinhos Modal */
+.padrinhos-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.padrinhos-modal-content {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+    text-align: center;
+    overflow: hidden;
+}
+
+.padrinhos-modal-image-container {
+    position: relative;
+    padding: 30px 30px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.padrinhos-modal-image-container img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #d4af37;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.padrinhos-modal-name {
+    padding: 0 30px 30px;
+}
+
+.padrinhos-modal-name h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #d4af37;
+    margin: 0;
+    font-weight: 600;
+}
+
+.padrinhos-modal .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    cursor: pointer;
+    color: #666;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 3001;
+}
+
+.padrinhos-modal .close-btn:hover {
+    background: white;
+    color: #333;
+    transform: scale(1.1);
+}
+
+/* Responsive design for padrinhos modal */
+@media (max-width: 480px) {
+    .padrinhos-modal-content {
+        max-width: 320px;
+    }
+    
+    .padrinhos-modal-image-container {
+        padding: 20px 20px 15px;
+    }
+    
+    .padrinhos-modal-image-container img {
+        width: 150px;
+        height: 150px;
+        border-width: 4px;
+    }
+    
+    .padrinhos-modal-name {
+        padding: 0 20px 20px;
+    }
+    
+    .padrinhos-modal-name h3 {
+        font-size: 1.6rem;
+    }
+}

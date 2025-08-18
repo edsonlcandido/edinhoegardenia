@@ -726,6 +726,25 @@
     </div>
   </div>
 
+  <!-- Modal Padrinhos -->
+  <div class="padrinhos-modal" id="padrinhosModal">
+    <div class="modal-backdrop" onclick="closePadrinhosModal()"></div>
+    <div class="padrinhos-modal-content">
+      <button class="close-btn" onclick="closePadrinhosModal()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18" />
+          <path d="M6 6l12 12" />
+        </svg>
+      </button>
+      <div class="padrinhos-modal-image-container">
+        <img id="padrinhosModalImage" src="" alt="Foto do padrinho/madrinha" />
+      </div>
+      <div class="padrinhos-modal-name">
+        <h3 id="padrinhosModalName"></h3>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -739,6 +758,7 @@
   <script src="js/countdown.js?v=202507212359"></script>
   <script src="js/wedding-script.js?v=202507212359"></script>
   <script src="js/gifts.js?v=202507212359"></script>
+  <script src="js/padrinhos-modal.js?v=202507212359"></script>
   <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </body>
 
