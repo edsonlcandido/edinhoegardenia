@@ -2055,3 +2055,44 @@ body {
         font-size: 1.6rem;
     }
 }
+
+/* Desktop enhancement for padrinhos modal (larger view on wide screens) */
+@media (min-width: 900px) {
+    .padrinhos-modal-content {
+        max-width: 780px; /* increase modal width on desktop */
+        padding-top: 30px; /* a little breathing space */
+    }
+    .padrinhos-modal-image-container {
+        padding: 40px 40px 25px;
+    }
+    .padrinhos-modal-image-container img {
+        width: 300px;
+        height: 300px;
+        border-width: 8px;
+    }
+    .padrinhos-modal-name {
+        padding: 0 40px 40px;
+    }
+    .padrinhos-modal-name h3 {
+        font-size: 3rem; /* bigger name on desktop */
+    }
+    .padrinhos-modal .close-btn {
+        top: 20px;
+        right: 20px;
+        padding: 10px;
+    }
+}
+
+/* Ultra-wide screens: allow even bigger presentation */
+@media (min-width: 1400px) {
+    .padrinhos-modal-content {
+        max-width: 900px;
+    }
+    .padrinhos-modal-image-container img {
+        width: 340px;
+        height: 340px;
+    }
+    .padrinhos-modal-name h3 {
+        font-size: 3.2rem;
+    }
+}
