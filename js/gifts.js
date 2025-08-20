@@ -10,7 +10,7 @@ const giftItems = [
     
     },
     {
-        id: 2,
+        id: "29hfhx2raayxziqe",
         name: "Aula de mergulho para descobrir o fundo do mar",
         description: "Explorar as belezas submarinas com instrutores especializados",
         image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop&auto=format",
@@ -18,7 +18,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 3,
+        id: "catqjft7kkxdcrzd",
         name: "Aulas de stand-up paddle",
         description: "Aventura aquática praticando SUP em águas cristalinas",
         image: "https://images.unsplash.com/photo-1629168924019-d2ea8caf5302?w=400&h=300&fit=crop&auto=format",
@@ -26,7 +26,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 4,
+        id: "j3z6tu53bf5aw22c",
         name: "Excursão de barco ao pôr do sol",
         description: "Passeio romântico de barco com vista para o pôr do sol",
         image: "https://images.unsplash.com/photo-1722547083154-a6a3038d43b3?w=400&h=300&fit=crop&auto=format",
@@ -34,7 +34,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 5,
+        id: "v9h5ifm45oz40mvt",
         name: "Trilha com vista panorâmica",
         description: "Caminhada em trilhas com vistas deslumbrantes da natureza",
         image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop&auto=format",
@@ -42,7 +42,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 6,
+        id: "p8lk52w7oz23l3pc",
         name: "Aula de culinária local para aprender os segredos da gastronomia",
         description: "Experiência gastronômica aprendendo pratos típicos locais",
         image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop&auto=format",
