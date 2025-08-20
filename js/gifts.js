@@ -1,7 +1,7 @@
 // Gift List Data
 const giftItems = [
     {
-        id: 1,
+        id: "sbk8wyauid1tf6pd",
         name: "Luau na praia com coquetéis tropicais",
         description: "Uma noite mágica na praia com drinks tropicais e música",
         image: "https://images.unsplash.com/photo-1596326270763-87f26e0f9225?w=400&h=300&fit=crop&auto=format",
@@ -182,8 +182,6 @@ let currentGift = null;
 document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById('gift-list')) {
         initializeGiftList();
-        setupGiftModal();
-        setupGiftFormValidation();
     }
 });
 
@@ -230,6 +228,8 @@ function renderGifts(gifts) {
 function createGiftCard(gift) {
     const card = document.createElement('div');
     card.className = 'gift-card';
+    // Create a direct checkout link instead of opening a modal
+    const checkoutUrl = `https://www.asaas.com/c/${encodeURIComponent(gift.id)}`;
     card.innerHTML = `
         <div class="gift-image">
             <img src="${gift.image}" alt="${gift.name}" loading="lazy">
@@ -237,12 +237,12 @@ function createGiftCard(gift) {
         <div class="gift-content">
             <h3 class="gift-name">${gift.name}</h3>
             <p class="gift-description">${gift.description}</p>
-            <button class="btn-gift" onclick="openGiftModal(${gift.id})">
+            <a class="btn-gift" href="${checkoutUrl}" target="_blank" rel="noopener noreferrer">
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                 </svg>
                 Presentear
-            </button>
+            </a>
         </div>
     `;
     return card;
@@ -300,148 +300,8 @@ function loadMoreGifts() {
 }
 
 // Open gift modal
-function openGiftModal(giftId) {
-    currentGift = giftItems.find(gift => gift.id === giftId);
-    if (currentGift) {
-        document.getElementById('modal-gift-name').textContent = currentGift.name;
-        // Seção Stripe
-        const stripeContainer = document.getElementById('stripe-buy-btn-container');
-        stripeContainer.innerHTML = "";
-        if (currentGift.stripeId && currentGift.stripeKey) {
-            // Remove qualquer botão Stripe existente
-            while (stripeContainer.firstChild) {
-                stripeContainer.removeChild(stripeContainer.firstChild);
-            }
-            // Cria o elemento Stripe
-            const stripeBtn = document.createElement("stripe-buy-button");
-            stripeBtn.setAttribute("buy-button-id", currentGift.stripeId);
-            stripeBtn.setAttribute("publishable-key", currentGift.stripeKey);
-            stripeContainer.appendChild(stripeBtn);
-        }
-        const modal = document.getElementById('gift-modal');
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-// Setup modal functionality
-function setupGiftModal() {
-    const modal = document.getElementById('gift-modal');
-    const closeBtn = modal.querySelector('.gift-modal-close');
-    // Fecha ao clicar no X
-    closeBtn.addEventListener('click', closeGiftModal);
-    // Fecha ao clicar fora do conteúdo
-    window.addEventListener('click', function (e) {
-        if (e.target === modal) {
-            closeGiftModal();
-        }
-    });
-    // Fecha com tecla ESC
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modal.style.display === 'block') {
-            closeGiftModal();
-        }
-    });
-}
-
-// Close modal
-function closeGiftModal() {
-    const modal = document.getElementById('gift-modal');
-    modal.classList.remove('show');
-    document.body.style.overflow = 'auto';
-    document.getElementById('gift-form').reset();
-}
-
-// Setup form validation and submission
-function setupGiftFormValidation() {
-    const form = document.getElementById('gift-form');
-    // CPF formatting
-    const cpfInput = document.getElementById('buyer-cpf');
-    cpfInput.addEventListener('input', function (e) {
-        let value = e.target.value.replace(/\D/g, '');
-        if (value.length > 11) value = value.slice(0, 11);
-        value = value.replace(/(\d{3})(\d)/, '$1.$2');
-        value = value.replace(/(\d{3})(\d)/, '$1.$2');
-        value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-        e.target.value = value;
-    });
-    // Phone formatting
-    const phoneInput = document.getElementById('buyer-phone');
-    phoneInput.addEventListener('input', function (e) {
-        let value = e.target.value.replace(/\D/g, '');
-        if (value.length > 11) value = value.slice(0, 11);
-        if (value.length > 10) {
-            value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-        } else if (value.length > 6) {
-            value = value.replace(/(\d{2})(\d{4,5})(\d{0,4})/, '($1) $2-$3');
-        } else if (value.length > 2) {
-            value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
-        } else {
-            value = value.replace(/(\d*)/, '($1');
-        }
-        e.target.value = value;
-    });
-    // Form submission
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const cpf = document.getElementById('buyer-cpf').value;
-        const phone = document.getElementById('buyer-phone').value;
-        const guestName = document.getElementById('buyer-name').value;
-        const giftName = currentGift ? currentGift.name : '';
-        const giftValue = document.getElementById('gift-value').value;
-        const btn = form.querySelector('.btn-confirmar');
-        if (!isValidCPF(cpf)) {
-            showNotification('CPF inválido. Por favor, verifique e tente novamente.');
-            return;
-        }
-        // Animação dos três pontinhos
-        let dotCount = 0;
-        let originalText = btn.textContent;
-        btn.disabled = true;
-        btn.style.opacity = '0.7';
-        btn.style.pointerEvents = 'none';
-        btn.textContent = 'Processando';
-        const interval = setInterval(() => {
-            dotCount = (dotCount + 1) % 4;
-            btn.textContent = 'Processando' + '.'.repeat(dotCount);
-        }, 400);
-        const endpoint = 'https://www.edsonegardenia.com/webhook/comprar-presente';
-        const params = new URLSearchParams({
-            nome_produto: giftName,
-            valor: giftValue,
-            convidado: guestName,
-            cpf: cpf,
-            celular: phone
-        });
-        try {
-            const response = await fetch(`${endpoint}?${params.toString()}`);
-            if (!response.ok) throw new Error('Erro ao gerar fatura');
-            const data = await response.json();
-            clearInterval(interval);
-            btn.textContent = originalText;
-            btn.disabled = false;
-            btn.style.opacity = '1';
-            btn.style.pointerEvents = '';
-            if (data && data.redirect) {
-                showNotification('Redirecionando para o pagamento via pix');
-                form.reset();
-                setTimeout(() => {
-                  window.location.href = data.redirect;
-                }, 1200);
-            } else {
-                showNotification('Erro ao gerar fatura. Tente novamente.');
-            }
-        } catch (err) {
-            clearInterval(interval);
-            btn.textContent = originalText;
-            btn.disabled = false;
-            btn.style.opacity = '1';
-            btn.style.pointerEvents = '';
-            showNotification('Erro ao enviar requisição. Tente novamente.');
-        }
-    });
-
-}
+// Note: modal and gift form were removed from the HTML.
+// Modal-related functions intentionally removed to avoid errors.
 
 // CPF validation function
 function isValidCPF(cpf) {

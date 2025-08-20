@@ -478,142 +478,7 @@
       </div>
     </section>
 
-    <!-- Modal para Compra -->
-    <div id="gift-modal" class="gift-modal">
-      <div class="gift-modal-content">
-        <span class="gift-modal-close">&times;</span>
-        <h2>Presentear com <span id="modal-gift-name"></span></h2>
-        <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-header" type="button" aria-expanded="true" aria-controls="stripe-content">Pagamento via Cartão de Crédito</button>
-            <div class="accordion-content" id="stripe-content" style="display: block;">
-              <div id="stripe-buy-btn-container" style="display: flex; justify-content: center;"></div>
-              <div class="payment-footer">
-                <small>
-                  <abbr title="Stripe é uma plataforma global de pagamentos online, segura e confiável.">Pagamento processado por Stripe</abbr>
-                </small>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <button class="accordion-header" type="button" aria-expanded="false" aria-controls="pix-content">Pagamento via PIX</button>
-            <div class="accordion-content" id="pix-content" style="display: none;">
-              <form id="gift-form">
-                <div class="gift-form-group">
-                  <label for="gift-value">Valor do Presente (R$)</label>
-                  <input
-                    type="number"
-                    id="gift-value"
-                    name="gift-value"
-                    min="1"
-                    step="0.01"
-                    required
-                  />
-                </div>
-                <div class="gift-form-group">
-                  <label for="buyer-name">Nome Completo</label>
-                  <input type="text" id="buyer-name" name="buyer-name" required />
-                </div>
-                <div class="gift-form-group">
-                  <label for="buyer-cpf">CPF</label>
-                  <input
-                    type="text"
-                    id="buyer-cpf"
-                    name="buyer-cpf"
-                    placeholder="000.000.000-00"
-                    required
-                  />
-                </div>
-                <div class="gift-form-group">
-                  <label for="buyer-phone">Celular</label>
-                  <input
-                    type="tel"
-                    id="buyer-phone"
-                    name="buyer-phone"
-                    placeholder="(11) 99999-9999"
-                    required
-                  />
-                </div>
-                <button type="submit" class="btn-confirmar">
-                  Pagar com PIX
-                </button>
-                <div class="payment-footer">
-                  <small>
-                    <abbr title="Ciabra é uma solução brasileira para pagamentos instantâneos via PIX, rápida e segura.">Pagamento processado por Ciabra</abbr>
-                  </small>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <style>
-      .accordion {
-        width: 100%;
-        margin-top: 18px;
-      }
-      .accordion-item {
-        border-bottom: 1px solid #eee;
-      }
-      .accordion-header {
-        width: 100%;
-        background: #f7f7f7;
-        color: #d4af37;
-        font-weight: 600;
-        font-size: 1.1rem;
-        padding: 16px 18px;
-        border: none;
-        outline: none;
-        text-align: left;
-        cursor: pointer;
-        transition: background 0.2s;
-        border-radius: 12px 12px 0 0;
-      }
-      .accordion-item:last-child .accordion-header {
-        border-radius: 0 0 12px 12px;
-      }
-      .accordion-item:last-child .accordion-header[aria-expanded="true"] {
-        border-radius: 0 0 12px 12px;
-      }
-      .accordion-header[aria-expanded="true"] {
-        background: #fffbe6;
-        color: #bfa233;
-      }
-      .accordion-content {
-        padding: 18px 12px 12px 12px;
-        background: #fff;
-        border-radius: 0 0 12px 12px;
-      }
-      @media (max-width: 600px) {
-        .gift-modal-content {
-          max-height: 96vh;
-          overflow-y: auto;
-        }
-        .accordion-content {
-          padding: 12px 4px 8px 4px;
-        }
-      }
-    </style> -->
-  <script>
-    // Acordeão para modal de presente
-    document.addEventListener('DOMContentLoaded', function () {
-      const headers = document.querySelectorAll('.accordion-header');
-      headers.forEach(header => {
-        header.addEventListener('click', function () {
-          const expanded = this.getAttribute('aria-expanded') === 'true';
-          headers.forEach(h => {
-            h.setAttribute('aria-expanded', 'false');
-            h.nextElementSibling.style.display = 'none';
-          });
-          if (!expanded) {
-            this.setAttribute('aria-expanded', 'true');
-            this.nextElementSibling.style.display = 'block';
-          }
-        });
-      });
-    });
-  </script>
+  <!-- Modal de pagamento removido: botões de presente agora apontam diretamente ao checkout do gateway -->
 
   <!-- Evento -->
   <section id="evento" class="evento">
@@ -755,10 +620,10 @@
       </p>
     </div>
   </footer>
-  <script src="js/countdown.js?v=202507212359"></script>
-  <script src="js/wedding-script.js?v=202507212359"></script>
-  <script src="js/gifts.js?v=202507212359"></script>
-  <script src="js/padrinhos-modal.js?v=202507212359"></script>
+  <script src="js/countdown.js?v=20250820083000"></script>
+  <script src="js/wedding-script.js?v=20250820083000"></script>
+  <script src="js/gifts.js?v=20250820083000"></script>
+  <script src="js/padrinhos-modal.js?v=20250820083000"></script>
   <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </body>
 

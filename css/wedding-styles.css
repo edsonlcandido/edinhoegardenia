@@ -537,6 +537,7 @@ body {
     align-items: center;
     gap: 8px;
     font-size: 0.9rem;
+    text-decoration: none;
 }
 
 .btn-gift:hover {
