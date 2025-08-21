@@ -50,7 +50,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 7,
+        id: "qg2uzg68so8pfpak",
         name: "Sessão de fotos profissional para registrar a lua de mel",
         description: "Registros profissionais dos momentos especiais da viagem",
         image: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400&h=300&fit=crop&auto=format",
@@ -58,7 +58,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 8,
+        id: "mvrd809joky75mv3",
         name: "Visita a um ponto turístico icônico",
         description: "Conhecer os principais pontos turísticos do destino",
         image: "https://plus.unsplash.com/premium_photo-1681828170050-e5c448b6bafe?w=400&h=300&fit=crop&auto=format",
@@ -66,7 +66,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 9,
+        id: "x31z0z8sclli2w57",
         name: "Massagem relaxante para o casal",
         description: "Momento de relaxamento e conexão com massagens especiais",
         image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=300&fit=crop&auto=format",
@@ -74,7 +74,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 10,
+        id: "s1g7cpr6kiooeahs",
         name: "Spa day para renovar as energias",
         description: "Dia completo de cuidados e relaxamento no spa",
         image: "https://images.unsplash.com/photo-1610289982320-3891f7c9fd6d?w=400&h=300&fit=crop&auto=format",
@@ -82,7 +82,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 11,
+        id: "6d16ao1ca5g9hehj",
         name: "Jantar romântico em um restaurante badalado",
         description: "Experiência gastronômica refinada em ambiente romântico",
         image: "https://images.unsplash.com/photo-1575390130709-7b5fee2919e4?w=400&h=300&fit=crop&auto=format",
@@ -90,7 +90,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 12,
+        id: "24t1m2yx6vo5w9d8",
         name: "Champanhe e frutas no quarto para celebrar a chegada",
         description: "Recepção especial com champanhe e frutas frescas",
         image: "https://images.unsplash.com/photo-1729719083582-83d296a1782f?w=400&h=300&fit=crop&auto=format",
@@ -98,7 +98,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 13,
+        id: "ta8bx3gwn6ll4cuu",
         name: "Café da manhã na cama com vista para o mar",
         description: "Manhãs especiais com café servido no quarto com vista",
         image: "https://images.unsplash.com/photo-1683260041390-e13c859f4b7b?w=400&h=300&fit=crop&auto=format",
@@ -106,7 +106,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 14,
+        id: "idtdj95eurulofud",
         name: "Upgrade para primeira classe no voo",
         description: "Viagem confortável em primeira classe",
         image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=300&fit=crop&auto=format",
@@ -114,7 +114,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 15,
+        id: "l5jhgbjtxv022kqw",
         name: "Acesso completo ao frigobar do hotel (sem culpa!)",
         description: "Liberação total do frigobar para aproveitar sem preocupações",
         image: "https://images.unsplash.com/photo-1540961403310-79825242906e?w=400&h=300&fit=crop&auto=format",
@@ -122,7 +122,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 16,
+        id: "px9xhgm6xqb011cy",
         name: "Cota para passagens aéreas (ida ou volta)",
         description: "Contribuição para as passagens aéreas da lua de mel",
         image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop&auto=format",
@@ -130,7 +130,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 17,
+        id: "visb5hu6qyvyvrg3",
         name: "Diária de hospedagem em hotel",
         description: "Noites de estadia em hotéis especiais durante a viagem",
         image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&h=300&fit=crop&auto=format",
@@ -138,7 +138,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 18,
+        id: "e22rx5tudkg6meud",
         name: "Aluguel de carro para explorar o destino",
         description: "Liberdade para explorar o destino com carro alugado",
         image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop&auto=format",
@@ -146,7 +146,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 19,
+        id: "spuoko079ytlb4sk",
         name: "Ajuda para pagar o excesso de bagagem da noiva",
         description: "Porque toda noiva precisa levar aquele look extra especial!",
         image: "https://images.unsplash.com/photo-1639597786247-5a64d8c62ebe?w=400&h=300&fit=crop&auto=format",
@@ -154,7 +154,7 @@ const giftItems = [
         stripeKey: "pk_live_51RkjHzDsbipPNlDZmo1H71yVPzdIrNTONlD2DtzJ6vUnjNxOKtKr3OpZ70Xs7eTlwW9UGGWz1bt0tFODs1jn1cKx00orTNQI76"
     },
     {
-        id: 20,
+        id: "92mp8v83tmpxr1f9",
         name: "Fundo para imprevistos e surpresas",
         description: "Reserva para momentos espontâneos e surpresas especiais",
         image: "https://images.unsplash.com/photo-1599585183326-87b1fff61c33?w=400&h=300&fit=crop&auto=format",
