@@ -889,6 +889,11 @@ body {
     padding: 0 20px;
 }
 
+.pais-grid-fixed {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
+}
+
 .filha-container {
     display: flex;
     justify-content: center;
@@ -1421,6 +1426,11 @@ body {
         max-width: 100%;
     }
     
+    .pais-grid-fixed {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px;
+    }
+    
     .familia-card {
         max-width: 100%;
     }
@@ -1553,8 +1563,17 @@ body {
         height: 100px;
     }
     
+    .pais-grid-fixed .familia-photo {
+        width: 90px;
+        height: 90px;
+    }
+    
     .familia-info h4 {
         font-size: 1.2rem;
+    }
+    
+    .pais-grid-fixed .familia-info h4 {
+        font-size: 1rem;
     }
 }
 
