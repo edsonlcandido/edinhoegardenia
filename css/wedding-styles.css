@@ -837,6 +837,115 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+/* Pais e Filha */
+.pais-e-filha {
+    padding: 5.25rem 0 3.125rem 0;
+    background: #f8f9fa;
+}
+
+.pais-e-filha h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    text-align: center;
+    color: #d4af37;
+    margin-bottom: 1rem;
+}
+
+.pais-e-filha-verse {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+}
+
+.raizes-section,
+.fruto-section {
+    margin-bottom: 4rem;
+}
+
+.raizes-section:last-child,
+.fruto-section:last-child {
+    margin-bottom: 0;
+}
+
+.subsection-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    text-align: center;
+    color: #d4af37;
+    margin-bottom: 2.5rem;
+}
+
+.pais-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.pais-grid-fixed {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
+}
+
+.filha-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.familia-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    max-width: 300px;
+}
+
+.familia-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.familia-photo {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #d4af37;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.familia-card:hover .familia-photo {
+    transform: scale(1.05);
+}
+
+.familia-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.familia-info h4 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: #d4af37;
+    margin: 0;
+    font-weight: 600;
+}
+
 /* Padrinhos */
 .padrinhos {
     padding: 5.25rem 0 3.125rem 0;
@@ -1311,6 +1420,26 @@ body {
         flex-shrink: 0;
     }
     
+    .pais-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        max-width: 100%;
+    }
+    
+    .pais-grid-fixed {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px;
+    }
+    
+    .familia-card {
+        max-width: 100%;
+    }
+    
+    .familia-photo {
+        width: 120px;
+        height: 120px;
+    }
+    
     .foto-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 15px;
@@ -1387,7 +1516,8 @@ body {
     .evento h2,
     .presentes h2,
     .confirmacao h2,
-    .padrinhos h2 {
+    .padrinhos h2,
+    .pais-e-filha h2 {
         font-size: 2rem;
     }
     
@@ -1422,6 +1552,28 @@ body {
     
     .padrinho-info p {
         font-size: 0.85rem;
+    }
+    
+    .subsection-title {
+        font-size: 1.8rem;
+    }
+    
+    .familia-photo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .pais-grid-fixed .familia-photo {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .familia-info h4 {
+        font-size: 1.2rem;
+    }
+    
+    .pais-grid-fixed .familia-info h4 {
+        font-size: 1rem;
     }
 }
 
