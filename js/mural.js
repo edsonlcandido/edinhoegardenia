@@ -167,14 +167,30 @@ class MuralDeRecados {
 
     updateMessageCount(totalItems = null) {
         const countElement = document.getElementById('totalMensagens');
-        if (!countElement) return;
+        const countContainer = countElement?.parentElement;
+        if (!countElement || !countContainer) return;
 
+        let count = 0;
         if (totalItems !== null) {
-            countElement.textContent = totalItems;
+            count = totalItems;
         } else {
             // Conta as mensagens visíveis na página
             const messages = document.querySelectorAll('.mensagem-card');
-            countElement.textContent = messages.length;
+            count = messages.length;
+        }
+
+        // Atualiza o texto com singular/plural correto
+        const messageText = this.getMessageCountText(count);
+        countContainer.innerHTML = messageText;
+    }
+
+    getMessageCountText(count) {
+        if (count === 0) {
+            return '<span id="totalMensagens">0</span> mensagens';
+        } else if (count === 1) {
+            return '<span id="totalMensagens">1</span> mensagem';
+        } else {
+            return `<span id="totalMensagens">${count}</span> mensagens`;
         }
     }
 
