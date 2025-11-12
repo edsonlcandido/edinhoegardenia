@@ -5,7 +5,7 @@ class MuralDeRecados {
         this.perPage = 10;
         this.isLoading = false;
         this.hasMoreMessages = true;
-        this.baseUrl = apiConfig.buildUrl('/api/collections/mensagens/records');
+        this.baseUrl = apiConfig.buildUrl('/api/collections/mensagens/records?filter=(message!="")');
         
         this.init();
     }
