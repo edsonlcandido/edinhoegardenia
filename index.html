@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edinho & Gardenia - Nosso Casamento</title>
-    <link rel="stylesheet" href="css/wedding-styles.css?v=202510082157" />
+    <link rel="stylesheet" href="css/wedding-styles.css?v=202511120140" />
     <style>
       /* Menu responsivo com animação de slide */
       .menu-toggle {
@@ -75,8 +75,8 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 0.75rem;
-          padding: 2.5rem 0;
+          gap: 0.5rem;
+          padding: 2rem 0;
           margin: 0;
           list-style: none;
           transform: translateX(100vw);
@@ -96,11 +96,11 @@
         }
 
         .nav-links a {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           color: #d4af37;
           font-weight: 600;
           text-decoration: none;
-          padding: 18px 0;
+          padding: 12px 0;
           display: block;
           transition: background 0.2s, color 0.2s;
         }
@@ -663,6 +663,33 @@
       </div>
     </section>
 
+    <!-- Mural de Recados -->
+    <section id="mural" class="mural">
+      <div class="container">
+        <h2>Mensagens dos Convidados</h2>
+        
+        <!-- Lista de mensagens -->
+        <div class="mensagens-container">
+          <div class="mensagens-header">
+            <h3>Recados Carinhosos</h3>
+            <div class="mensagens-count">
+              <span id="totalMensagens">0</span> mensagens
+            </div>
+          </div>
+          <div id="mensagensList" class="mensagens-list">
+            <!-- Mensagens serão carregadas aqui via JavaScript -->
+            <div class="loading-messages">
+              <div class="loading-spinner"></div>
+              <p>Carregando mensagens...</p>
+            </div>
+          </div>
+          <button id="carregarMais" class="btn-carregar-mais" style="display: none;">
+            Carregar Mais Mensagens
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- Modal Instagram -->
     <div class="instagram-modal" id="instagramModal">
       <div class="modal-backdrop" onclick="closeModal()"></div>
@@ -824,10 +851,12 @@
         </p>
       </div>
     </footer>
+    <script src="js/api-config.js?v=202511120050"></script>
     <script src="js/countdown.js?v=202510082157"></script>
     <script src="js/wedding-script.js?v=202510082157"></script>
     <script src="js/gifts.js?v=202510082157"></script>
     <script src="js/padrinhos-modal.js?v=202510082157"></script>
+    <script src="js/mural.js?v=202511120050"></script>
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
   </body>
 </html>
