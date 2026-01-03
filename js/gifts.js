@@ -201,10 +201,11 @@ function initializeGiftList() {
     displayedGifts = shuffledGifts.slice(0, 10);
     remainingGifts = shuffledGifts.slice(10);
 
-    renderGifts(displayedGifts);
-
-    // Add PIX card at the end
+    // Add PIX card first
     renderPixCard();
+
+    // Then render the gifts
+    renderGifts(displayedGifts);
 
     if (remainingGifts.length > 0) {
         document.getElementById('load-more-btn').style.display = 'block';
@@ -229,7 +230,7 @@ function createGiftCard(gift) {
     const card = document.createElement('div');
     card.className = 'gift-card';
     // Create a direct checkout link instead of opening a modal
-    const checkoutUrl = `https://www.asaas.com/c/${encodeURIComponent(gift.id)}`;
+    const checkoutUrl = `https://link.mercadopago.com.br/edinhoegardenia`;
     card.innerHTML = `
         <div class="gift-image">
             <img src="${gift.image}" alt="${gift.name}" loading="lazy">
@@ -289,12 +290,14 @@ function loadMoreGifts() {
         existingPixCard.remove();
     }
 
+    // Add PIX card back at the beginning
+    const giftList = document.getElementById('gift-list');
+    const pixCardElement = createPixCard();
+    giftList.insertBefore(pixCardElement, giftList.firstChild);
+
     renderGifts(remainingGifts);
     displayedGifts = [...displayedGifts, ...remainingGifts];
     remainingGifts = [];
-
-    // Add PIX card again at the end
-    renderPixCard();
 
     document.getElementById('load-more-btn').style.display = 'none';
 }
